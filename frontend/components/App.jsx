@@ -6,6 +6,7 @@ import LoginContainer from './containers/login_container'
 import SignupContainer from './containers/signup_container'
 import WeightLogContainer from './containers/weight_logs_container'
 import PersonalRecordContainer from './containers/personal_records_container'
+import Profile from './profile'
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                 <AuthRoute path='/signup' component={SignupContainer}/>
                 <Route path='/weightlogs' component={WeightLogContainer}/>
                 <Route path='/records' component={PersonalRecordContainer}/>
+                <Route path='/profile' component={Profile}/>
                 <Route path='/' component={HomeContainer}/>
             </Switch>
         </div>
