@@ -392,7 +392,9 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    weightLogs: Object.values(state.entities.weightLogs)
+    weightLogs: Object.values(state.entities.weightLogs).sort(function (a, b) {
+      return sortDate(a.date, b.date);
+    })
   };
 };
 
@@ -406,6 +408,12 @@ var mDTP = function mDTP(dispatch) {
     }
   };
 };
+
+function sortDate(dateOne, dateTwo) {
+  var dateA = new Date(dateOne),
+      dateB = new Date(dateTwo);
+  return dateA - dateB;
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_weight_log_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
 

@@ -11982,3 +11982,1920 @@ Processing by Api::WeightLogsController#create as JSON
 Completed 200 OK in 66ms (Views: 16.5ms | ActiveRecord: 43.8ms)
 
 
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:30:07 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-03-22", "weight"=>"215", "body_fat_percentage"=>"11", "lean_mass"=>"191.4", "fat_mass"=>"23.6"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.5ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-03-22"], ["body_fat_percentage", 11.0], ["weight", 215.0], ["lean_mass", 191.4], ["fat_mass", 23.6], ["created_at", "2020-03-28 09:30:07.867170"], ["updated_at", "2020-03-28 09:30:07.867170"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.7ms)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:30:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 32ms (Views: 31.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:30:15 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.4ms)
+Completed 200 OK in 27ms (Views: 14.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:30:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 31ms (Views: 30.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:30:31 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.1ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.3ms)
+Completed 200 OK in 17ms (Views: 12.8ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:30:48 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-03-24", "weight"=>"200", "body_fat_percentage"=>"10", "lean_mass"=>"180", "fat_mass"=>"20"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.4ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-03-24"], ["body_fat_percentage", 10.0], ["weight", 200.0], ["lean_mass", 180.0], ["fat_mass", 20.0], ["created_at", "2020-03-28 09:30:48.049836"], ["updated_at", "2020-03-28 09:30:48.049836"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 66ms (Views: 60.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:30:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:30:49 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.0ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:31:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 283ms (Views: 282.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:31:59 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.8ms)
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:34:51 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (2.4ms)
+Completed 200 OK in 995ms (Views: 992.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:34:52 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (8.0ms)
+Completed 200 OK in 43ms (Views: 35.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:38:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+Completed 200 OK in 1548ms (Views: 1545.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:38:13 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.6ms)
+Completed 200 OK in 47ms (Views: 43.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:38:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 35ms (Views: 34.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:38:15 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (2.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.2ms)
+Completed 200 OK in 21ms (Views: 12.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:38:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 1946ms (Views: 1945.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:38:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.6ms)
+Completed 200 OK in 121ms (Views: 118.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:39:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 2793ms (Views: 2792.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:39:58 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.3ms)
+Completed 200 OK in 159ms (Views: 151.4ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:43:51 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.8ms)
+Completed 200 OK in 865ms (Views: 863.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:43:53 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.7ms)
+Completed 200 OK in 38ms (Views: 28.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:44:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 206ms (Views: 205.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:44:08 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.2ms)
+Completed 200 OK in 42ms (Views: 37.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:44:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 1024ms (Views: 1022.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:44:12 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.7ms)
+Completed 200 OK in 19ms (Views: 14.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:45:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 32ms (Views: 30.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:45:10 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.1ms)
+Completed 200 OK in 19ms (Views: 13.1ms | ActiveRecord: 3.5ms)
+
+
+  [1m[36mWeightLog Load (2.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs"[0m
+Started GET "/" for ::1 at 2020-03-28 02:49:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 349ms (Views: 348.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:49:20 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (8.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.0ms)
+Completed 200 OK in 45ms (Views: 33.1ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:52:08 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 1116ms (Views: 1115.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:52:09 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.8ms)
+Completed 200 OK in 33ms (Views: 29.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:53:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 650ms (Views: 649.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:53:38 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (7.1ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (10.2ms)
+Completed 200 OK in 53ms (Views: 42.8ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:54:17 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2019-03-28", "weight"=>"100", "body_fat_percentage"=>"10", "lean_mass"=>"90", "fat_mass"=>"10"}, "user_id"=>"4"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (1.7ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2019-03-28"], ["body_fat_percentage", 10.0], ["weight", 100.0], ["lean_mass", 90.0], ["fat_mass", 10.0], ["created_at", "2020-03-28 09:54:17.801367"], ["updated_at", "2020-03-28 09:54:17.801367"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (56.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 96ms (Views: 27.2ms | ActiveRecord: 59.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:54:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:54:47 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.0ms)
+Completed 200 OK in 19ms (Views: 14.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:58:04 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+Completed 200 OK in 892ms (Views: 890.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:58:05 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.5ms)
+Completed 200 OK in 136ms (Views: 131.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:58:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 33ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:58:10 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.6ms)
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:58:25 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+Completed 200 OK in 40ms (Views: 39.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:58:26 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.3ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:58:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 272ms (Views: 270.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:58:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.0ms)
+Completed 200 OK in 39ms (Views: 35.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 02:58:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 194ms (Views: 193.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 02:58:58 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.8ms)
+Completed 200 OK in 42ms (Views: 37.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:00:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 828ms (Views: 827.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:00:46 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.1ms)
+Completed 200 OK in 59ms (Views: 54.6ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:01:11 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2018-03-28", "weight"=>"150", "body_fat_percentage"=>"12", "lean_mass"=>"132", "fat_mass"=>"18"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.6ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2018-03-28"], ["body_fat_percentage", 12.0], ["weight", 150.0], ["lean_mass", 132.0], ["fat_mass", 18.0], ["created_at", "2020-03-28 10:01:11.523279"], ["updated_at", "2020-03-28 10:01:11.523279"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.9ms)
+Completed 200 OK in 71ms (Views: 64.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:01:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:01:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.9ms)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:01:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:01:43 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.5ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.5ms)
+Completed 200 OK in 17ms (Views: 12.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 1050ms (Views: 1049.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:13 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (8.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (12.8ms)
+Completed 200 OK in 70ms (Views: 57.8ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 34ms (Views: 33.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:15 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.3ms)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:32 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 749ms (Views: 748.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:33 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (40.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (45.9ms)
+Completed 200 OK in 66ms (Views: 21.5ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:34 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.9ms)
+Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 37ms (Views: 36.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:36 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.3ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.0ms)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 44ms (Views: 43.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (3.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (7.3ms)
+Completed 200 OK in 21ms (Views: 14.2ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 424ms (Views: 423.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:46 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (2.3ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (6.1ms)
+Completed 200 OK in 43ms (Views: 38.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 70ms (Views: 69.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:48 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.9ms)
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:03:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 57ms (Views: 56.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:03:49 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (15.7ms)
+Completed 200 OK in 28ms (Views: 24.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+Completed 200 OK in 435ms (Views: 434.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:01 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.5ms)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:02 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (7.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (10.6ms)
+Completed 200 OK in 24ms (Views: 14.6ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:18 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 72ms (Views: 70.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:18 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.6ms)
+Completed 200 OK in 28ms (Views: 24.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:32 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+Completed 200 OK in 891ms (Views: 890.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:33 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.0ms)
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:35 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.3ms)
+Completed 200 OK in 472ms (Views: 10.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (5.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (8.5ms)
+Completed 200 OK in 21ms (Views: 13.9ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:38 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 35ms (Views: 34.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:39 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (6.8ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:52 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2021-03-28", "weight"=>"225", "body_fat_percentage"=>"10", "lean_mass"=>"202.5", "fat_mass"=>"22.5"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (8.7ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2021-03-28"], ["body_fat_percentage", 10.0], ["weight", 225.0], ["lean_mass", 202.5], ["fat_mass", 22.5], ["created_at", "2020-03-28 10:04:52.288789"], ["updated_at", "2020-03-28 10:04:52.288789"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 34ms (Views: 16.8ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 32ms (Views: 31.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:57 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.9ms)
+Completed 200 OK in 24ms (Views: 14.0ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:04:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:04:58 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (15.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (18.4ms)
+Completed 200 OK in 34ms (Views: 13.9ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:05:33 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 582ms (Views: 581.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:05:34 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.0ms)
+Completed 200 OK in 62ms (Views: 58.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:05:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 239ms (Views: 238.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:05:36 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.8ms)
+Completed 200 OK in 23ms (Views: 15.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:06:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 804ms (Views: 803.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:06:07 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (6.5ms)
+Completed 200 OK in 38ms (Views: 33.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:06:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 792ms (Views: 791.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:06:30 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.4ms)
+Completed 200 OK in 31ms (Views: 23.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:06:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 549ms (Views: 547.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:06:58 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.2ms)
+Completed 200 OK in 61ms (Views: 57.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:07:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+Completed 200 OK in 1283ms (Views: 1282.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:07:11 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (11.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (10.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (14.9ms)
+Completed 200 OK in 101ms (Views: 76.1ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:07:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 40ms (Views: 39.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:07:13 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (10.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (14.8ms)
+Completed 200 OK in 31ms (Views: 14.1ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:09:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 1204ms (Views: 1200.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:09:59 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.1ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (7.6ms)
+Completed 200 OK in 30ms (Views: 24.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:10:51 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 739ms (Views: 738.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:10:52 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (10.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (19.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (24.0ms)
+Completed 200 OK in 69ms (Views: 36.1ms | ActiveRecord: 30.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:10:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 50ms (Views: 49.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:10:54 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.7ms)
+Completed 200 OK in 18ms (Views: 14.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:11:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 2961ms (Views: 2960.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:11:10 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.9ms)
+Completed 200 OK in 55ms (Views: 48.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:11:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 703ms (Views: 702.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:11:48 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.8ms)
+Completed 200 OK in 33ms (Views: 27.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:12:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 80ms (Views: 76.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:12:00 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (13.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (17.2ms)
+Completed 200 OK in 33ms (Views: 16.3ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:12:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+Completed 200 OK in 887ms (Views: 886.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:12:03 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (3.3ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:12:03 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 58ms (Views: 57.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:12:03 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.7ms)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:12:25 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 816ms (Views: 814.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:12:26 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.3ms)
+Completed 200 OK in 45ms (Views: 38.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:13:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 1238ms (Views: 1236.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:13:13 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.3ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (6.5ms)
+Completed 200 OK in 81ms (Views: 76.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:13:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:13:22 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (4.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (8.3ms)
+Completed 200 OK in 22ms (Views: 14.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:14:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+Completed 200 OK in 2227ms (Views: 2226.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:14:19 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.2ms)
+Completed 200 OK in 55ms (Views: 51.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:14:31 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2017-03-28", "weight"=>"100", "body_fat_percentage"=>"10", "lean_mass"=>"90", "fat_mass"=>"10"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.9ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2017-03-28"], ["body_fat_percentage", 10.0], ["weight", 100.0], ["lean_mass", 90.0], ["fat_mass", 10.0], ["created_at", "2020-03-28 10:14:31.866853"], ["updated_at", "2020-03-28 10:14:31.866853"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (39.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.8ms)
+Completed 200 OK in 67ms (Views: 17.7ms | ActiveRecord: 41.2ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:15:14 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2022-03-28", "weight"=>"200", "body_fat_percentage"=>"10", "lean_mass"=>"180", "fat_mass"=>"20"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.4ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2022-03-28"], ["body_fat_percentage", 10.0], ["weight", 200.0], ["lean_mass", 180.0], ["fat_mass", 20.0], ["created_at", "2020-03-28 10:15:14.831620"], ["updated_at", "2020-03-28 10:15:14.831620"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (16.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.7ms)
+Completed 200 OK in 30ms (Views: 9.5ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:16:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 716ms (Views: 715.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:16:59 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (2.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (8.4ms)
+Completed 200 OK in 41ms (Views: 35.5ms | ActiveRecord: 2.9ms)
+
+
+  [1m[36mWeightLog Load (2.4ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs"[0m
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (1.0ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 47]]
+  [1m[35m (50.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 48]]
+  [1m[35m (41.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.6ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 49]]
+  [1m[35m (40.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.5ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 50]]
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.6ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 51]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.5ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 52]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 53]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 54]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 55]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWeightLog Destroy (0.3ms)[0m  [1m[31mDELETE FROM "weight_logs" WHERE "weight_logs"."id" = $1[0m  [["id", 56]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-03-28 03:17:18 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 234ms (Views: 232.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:17:18 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.8ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (6.5ms)
+Completed 200 OK in 108ms (Views: 105.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:17:24 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-03-28", "weight"=>"200", "body_fat_percentage"=>"10", "lean_mass"=>"180", "fat_mass"=>"20"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.5ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-03-28"], ["body_fat_percentage", 10.0], ["weight", 200.0], ["lean_mass", 180.0], ["fat_mass", 20.0], ["created_at", "2020-03-28 10:17:24.829839"], ["updated_at", "2020-03-28 10:17:24.829839"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (1.7ms)
+Completed 200 OK in 41ms (Views: 28.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:17:39 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-03-29", "weight"=>"210", "body_fat_percentage"=>"10", "lean_mass"=>"189", "fat_mass"=>"21"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.5ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-03-29"], ["body_fat_percentage", 10.0], ["weight", 210.0], ["lean_mass", 189.0], ["fat_mass", 21.0], ["created_at", "2020-03-28 10:17:39.335197"], ["updated_at", "2020-03-28 10:17:39.335197"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.5ms)
+Completed 200 OK in 16ms (Views: 7.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:17:51 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2019-03-29", "weight"=>"210", "body_fat_percentage"=>"10", "lean_mass"=>"189", "fat_mass"=>"21"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.6ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2019-03-29"], ["body_fat_percentage", 10.0], ["weight", 210.0], ["lean_mass", 189.0], ["fat_mass", 21.0], ["created_at", "2020-03-28 10:17:51.225530"], ["updated_at", "2020-03-28 10:17:51.225530"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.9ms)
+Completed 200 OK in 22ms (Views: 7.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:18:06 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2017-03-29", "weight"=>"110", "body_fat_percentage"=>"11", "lean_mass"=>"97.9", "fat_mass"=>"12.1"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.6ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2017-03-29"], ["body_fat_percentage", 11.0], ["weight", 110.0], ["lean_mass", 97.9], ["fat_mass", 12.1], ["created_at", "2020-03-28 10:18:06.673718"], ["updated_at", "2020-03-28 10:18:06.673718"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 14ms (Views: 7.0ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:18:19 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2021-03-29", "weight"=>"215", "body_fat_percentage"=>"13.1", "lean_mass"=>"186.8", "fat_mass"=>"28.2"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.6ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2021-03-29"], ["body_fat_percentage", 13.1], ["weight", 215.0], ["lean_mass", 186.8], ["fat_mass", 28.2], ["created_at", "2020-03-28 10:18:19.961911"], ["updated_at", "2020-03-28 10:18:19.961911"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.5ms)
+Completed 200 OK in 14ms (Views: 6.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:19:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+Completed 200 OK in 1405ms (Views: 1404.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:19:21 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.7ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.1ms)
+Completed 200 OK in 103ms (Views: 98.5ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:19:31 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-05-28", "weight"=>"200", "body_fat_percentage"=>"11", "lean_mass"=>"178", "fat_mass"=>"22"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.9ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-05-28"], ["body_fat_percentage", 11.0], ["weight", 200.0], ["lean_mass", 178.0], ["fat_mass", 22.0], ["created_at", "2020-03-28 10:19:31.498994"], ["updated_at", "2020-03-28 10:19:31.498994"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 52ms (Views: 32.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:19:58 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-09-28", "weight"=>"200", "body_fat_percentage"=>"11", "lean_mass"=>"178", "fat_mass"=>"22"}, "user_id"=>"4"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.5ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-09-28"], ["body_fat_percentage", 11.0], ["weight", 200.0], ["lean_mass", 178.0], ["fat_mass", 22.0], ["created_at", "2020-03-28 10:19:58.798038"], ["updated_at", "2020-03-28 10:19:58.798038"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:20:52 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+Completed 200 OK in 1115ms (Views: 1113.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:20:53 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.6ms)
+Completed 200 OK in 106ms (Views: 101.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:23:41 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 849ms (Views: 848.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:23:42 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.3ms)
+Completed 200 OK in 48ms (Views: 43.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:24:05 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 3338ms (Views: 3336.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:24:09 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (5.3ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (9.1ms)
+Completed 200 OK in 41ms (Views: 32.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:24:14 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 112ms (Views: 111.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:24:15 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.5ms)
+Completed 200 OK in 20ms (Views: 13.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:24:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 726ms (Views: 725.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:24:41 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (2.0ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.4ms)
+Completed 200 OK in 127ms (Views: 121.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:25:14 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 209ms (Views: 208.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:25:14 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.9ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (4.3ms)
+Completed 200 OK in 30ms (Views: 26.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:26:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 1315ms (Views: 1314.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:26:45 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (6.2ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (9.9ms)
+Completed 200 OK in 57ms (Views: 45.8ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:28:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 1961ms (Views: 1960.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:28:37 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.5ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (5.2ms)
+Completed 200 OK in 35ms (Views: 31.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 03:34:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 2160ms (Views: 2159.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:34:19 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (0.6ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (2.8ms)
+Completed 200 OK in 31ms (Views: 26.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:34:59 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2020-06-29", "weight"=>"220", "body_fat_percentage"=>"10", "lean_mass"=>"198", "fat_mass"=>"22"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (42.0ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2020-06-29"], ["body_fat_percentage", 10.0], ["weight", 220.0], ["lean_mass", 198.0], ["fat_mass", 22.0], ["created_at", "2020-03-28 10:34:59.325848"], ["updated_at", "2020-03-28 10:34:59.325848"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.6ms)
+Completed 200 OK in 78ms (Views: 28.8ms | ActiveRecord: 43.0ms)
+
+
+Started POST "/api/users/4/weight_logs" for ::1 at 2020-03-28 03:35:25 -0700
+Processing by Api::WeightLogsController#create as JSON
+  Parameters: {"weight_log"=>{"user_id"=>"4", "date"=>"2021-01-01", "weight"=>"220", "body_fat_percentage"=>"10", "lean_mass"=>"198", "fat_mass"=>"22"}, "user_id"=>"4"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[36mWeightLog Create (0.8ms)[0m  [1m[32mINSERT INTO "weight_logs" ("user_id", "date", "body_fat_percentage", "weight", "lean_mass", "fat_mass", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["date", "2021-01-01"], ["body_fat_percentage", 10.0], ["weight", 220.0], ["lean_mass", 198.0], ["fat_mass", 22.0], ["created_at", "2020-03-28 10:35:25.037022"], ["updated_at", "2020-03-28 10:35:25.037022"]]
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/weight_logs_controller.rb:13
+  Rendering api/weight_logs/show.json.jbuilder
+  Rendered api/weight_logs/show.json.jbuilder (0.5ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 1.9ms)
+
+
