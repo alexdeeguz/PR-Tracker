@@ -13,7 +13,7 @@ class Api::PersonalRecordsController < ApplicationController
         if @personal_record.save
             render :show
         else  
-            render json: @personal_record.errors.full_messages
+            render json: @personal_record.errors.full_messages, status: 422
         end
     end
 

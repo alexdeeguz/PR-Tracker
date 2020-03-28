@@ -13,7 +13,7 @@ class Api::WeightLogsController < ApplicationController
         if @weight_log.save
             render :show
         else  
-            render json: @weight_log.errors.full_messages
+            render json: @weight_log.errors.full_messages, status: 422
         end
     end
 

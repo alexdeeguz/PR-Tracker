@@ -216,19 +216,21 @@ var sign_up = function sign_up(user) {
 /*!************************************************!*\
   !*** ./frontend/actions/weight_log_actions.js ***!
   \************************************************/
-/*! exports provided: RECEIVE_WEIGHT_LOGS, RECEIVE_WEIGHT_LOG, getAllWeightLogs, postWeightLog */
+/*! exports provided: RECEIVE_WEIGHT_LOGS, RECEIVE_WEIGHT_LOG, RECEIVE_ERRORS, getAllWeightLogs, postWeightLog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WEIGHT_LOGS", function() { return RECEIVE_WEIGHT_LOGS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WEIGHT_LOG", function() { return RECEIVE_WEIGHT_LOG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllWeightLogs", function() { return getAllWeightLogs; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postWeightLog", function() { return postWeightLog; });
 /* harmony import */ var _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/weight_log_utils */ "./frontend/util/weight_log_utils.jsx");
 
 var RECEIVE_WEIGHT_LOGS = "RECEIVE_WEIGHT_LOGS";
 var RECEIVE_WEIGHT_LOG = "RECEIVE_WEIGHT_LOG";
+var RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 var receiveWeightLogs = function receiveWeightLogs(weightLogs) {
   return {
@@ -244,6 +246,13 @@ var receiveWeightLog = function receiveWeightLog(weightLog) {
   };
 };
 
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors
+  };
+};
+
 var getAllWeightLogs = function getAllWeightLogs(id) {
   return function (dispatch) {
     return _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__["fetchWeightLogs"](id).then(function (weightLogs) {
@@ -255,6 +264,8 @@ var postWeightLog = function postWeightLog(id, log) {
   return function (dispatch) {
     return _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__["createWeightLog"](id, log).then(function (log) {
       return dispatch(receiveWeightLog(log));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
     });
   };
 };
@@ -313,6 +324,40 @@ var App = function App() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/containers/header_container.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/containers/header_container.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header */ "./frontend/components/header.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_out"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_header__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -543,6 +588,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _weight_log_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../weight_log_index */ "./frontend/components/weight_log_index.jsx");
 /* harmony import */ var _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/weight_log_actions */ "./frontend/actions/weight_log_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -552,7 +599,8 @@ var mSTP = function mSTP(state) {
     currentUser: state.entities.users[state.session.id],
     weightLogs: Object.values(state.entities.weightLogs).sort(function (a, b) {
       return sortDate(a.date, b.date);
-    })
+    }),
+    errors: state.errors.session
   };
 };
 
@@ -563,6 +611,9 @@ var mDTP = function mDTP(dispatch) {
     },
     postWeightLog: function postWeightLog(id, log) {
       return dispatch(Object(_actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_2__["postWeightLog"])(id, log));
+    },
+    removeErrors: function removeErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["removeErrors"])());
     }
   };
 };
@@ -574,6 +625,82 @@ function sortDate(dateOne, dateTwo) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_weight_log_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/header.jsx":
+/*!****************************************!*\
+  !*** ./frontend/components/header.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Header = /*#__PURE__*/function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  var _super = _createSuper(Header);
+
+  function Header(props) {
+    var _this;
+
+    _classCallCheck(this, Header);
+
+    _this = _super.call(this, props);
+    _this.logout = _this.logout.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Header, [{
+    key: "logout",
+    value: function logout(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      this.props.logout().then(function () {
+        return _this2.props.history.push('/login');
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.logout
+      }, "Log out"));
+    }
+  }]);
+
+  return Header;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
 
 /***/ }),
 
@@ -823,17 +950,17 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "personal-records"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, squatRecords.length, " SQUAT PRS"), squatRecords.map(function (record) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, squatRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, squatRecords.length, " SQUAT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, squatRecords.length, " SQUAT PRS"), squatRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, benchRecords.length, " BENCH PRS"), benchRecords.map(function (record) {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, benchRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, benchRecords.length, " BENCH PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, benchRecords.length, " BENCH PRS"), benchRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, deadliftRecords.length, " DEADLIFT PRS"), deadliftRecords.map(function (record) {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, deadliftRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, deadliftRecords.length, " DEADLIFT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, deadliftRecords.length, " DEADLIFT PRS"), deadliftRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
@@ -931,6 +1058,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_weight_logs_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./containers/weight_logs_container */ "./frontend/components/containers/weight_logs_container.jsx");
 /* harmony import */ var _containers_personal_records_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/personal_records_container */ "./frontend/components/containers/personal_records_container.jsx");
 /* harmony import */ var _containers_stats_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/stats_container */ "./frontend/components/containers/stats_container.jsx");
+/* harmony import */ var _containers_header_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/header_container */ "./frontend/components/containers/header_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -959,6 +1087,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Profile = /*#__PURE__*/function (_React$Component) {
   _inherits(Profile, _React$Component);
 
@@ -973,7 +1102,9 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   _createClass(Profile, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_header_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        history: this.props.history
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/profile"
       }, "Stats"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/profile/records"
@@ -1111,11 +1242,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.formType === 'login') {
         this.props.login(this.state).then(function () {
-          return _this2.props.history.push('/');
+          return _this2.props.history.push('/profile');
         });
       } else {
         this.props.signup(this.state).then(function () {
-          return _this2.props.history.push('/');
+          return _this2.props.history.push('/profile');
         });
       }
     }
@@ -1203,11 +1334,15 @@ var Stats = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var total = 0;
       var _this$props = this.props,
           maxSquat = _this$props.maxSquat,
           maxBench = _this$props.maxBench,
           maxDeadlift = _this$props.maxDeadlift;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "SQUAT: ", maxSquat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "BENCH: ", maxBench), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DEADLIFT: ", maxDeadlift), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "TOTAL: ", maxBench + maxSquat + maxDeadlift)));
+      maxSquat >= 0 ? total += maxSquat : null;
+      maxBench >= 0 ? total += maxBench : null;
+      maxDeadlift >= 0 ? total += maxDeadlift : null;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, maxSquat <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "SQUAT: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "SQUAT: ", maxSquat), maxBench <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "BENCH: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "BENCH: ", maxBench), maxDeadlift <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DEADLIFT: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DEADLIFT: ", maxDeadlift), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "TOTAL: ", total)));
     }
   }]);
 
@@ -1284,6 +1419,11 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.getWeightLogs(this.props.currentUser.id);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeErrors();
     }
   }, {
     key: "handleSubmit",
@@ -1368,6 +1508,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props);
       var changes = this.changes();
       var weightLogs = this.props.weightLogs;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOG INDEX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1388,7 +1529,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBF
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "LOG WEIGHT")), weightLogs.map(function (log) {
+      }, "LOG WEIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.errors.join(". ")), weightLogs.map(function (log) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: log.id,
           weightLog: log

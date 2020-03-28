@@ -22,6 +22,10 @@ class WeightLogIndex extends React.Component {
         this.props.getWeightLogs(this.props.currentUser.id)
     }
 
+    componentWillUnmount() {
+        this.props.removeErrors()
+    }
+
     handleSubmit(e) {
         e.preventDefault()
         const log = {
@@ -90,6 +94,7 @@ class WeightLogIndex extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         const changes = this.changes()
         const { weightLogs } = this.props
         return (
@@ -114,6 +119,9 @@ class WeightLogIndex extends React.Component {
                     </label>
                     <button type="submit">LOG WEIGHT</button>
                 </form>
+                {
+                    <p>{this.props.errors.join(". ")}</p>
+                }
                 {
                     weightLogs.map(log => (
                         <WeightLogIndexItem key={log.id} weightLog={log} />
