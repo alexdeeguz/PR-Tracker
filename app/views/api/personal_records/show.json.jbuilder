@@ -1,0 +1,1 @@
+json.extract! @personal_record, :id, :date, :weight, :exercise, :reps

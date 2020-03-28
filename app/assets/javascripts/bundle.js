@@ -630,9 +630,24 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(PersonalRecordIndex);
 
   function PersonalRecordIndex(props) {
+    var _this;
+
     _classCallCheck(this, PersonalRecordIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      user_id: _this.props.currentUser.id,
+      date: _this.dateToday(),
+      exercise: "",
+      weight: "",
+      reps: 1
+    };
+    _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
+    _this.updateExercise = _this.updateExercise.bind(_assertThisInitialized(_this));
+    _this.updateWeight = _this.updateWeight.bind(_assertThisInitialized(_this));
+    _this.updateReps = _this.updateReps.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(PersonalRecordIndex, [{
@@ -641,15 +656,123 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       this.props.getAllPersonalRecords(this.props.currentUser.id);
     }
   }, {
+    key: "dateToday",
+    value: function dateToday() {
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var year = date.getFullYear();
+
+      if (month < 10) {
+        month = "0".concat(month);
+      }
+
+      if (day < 10) {
+        day = "0".concat(day);
+      }
+
+      return "".concat(year, "-").concat(month, "-").concat(day);
+    }
+  }, {
+    key: "updateDate",
+    value: function updateDate(e) {
+      this.setState({
+        date: e.target.value
+      });
+    }
+  }, {
+    key: "updateExercise",
+    value: function updateExercise(e) {
+      this.setState({
+        exercise: e.target.value
+      });
+    }
+  }, {
+    key: "updateWeight",
+    value: function updateWeight(e) {
+      this.setState({
+        weight: e.target.value
+      });
+    }
+  }, {
+    key: "updateReps",
+    value: function updateReps(e) {
+      this.setState({
+        reps: e.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.postPersonalRecord(this.props.currentUser.id, this.state);
+    }
+  }, {
     key: "render",
     value: function render() {
       var personalRecords = this.props.personalRecords;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PR INDEX"), personalRecords.map(function (record) {
+      var squatRecords = personalRecords.filter(function (record) {
+        return record.exercise === "squat";
+      }).sort(function (a, b) {
+        return a.weight - b.weight;
+      });
+      var benchRecords = personalRecords.filter(function (record) {
+        return record.exercise === "bench";
+      }).sort(function (a, b) {
+        return a.weight - b.weight;
+      });
+      var deadliftRecords = personalRecords.filter(function (record) {
+        return record.exercise === "deadlift";
+      }).sort(function (a, b) {
+        return a.weight - b.weight;
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "YOU HAVE HIT ", personalRecords.length, " PERSONAL RECORDS!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Log a PR: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.state.date,
+        type: "date",
+        onChange: this.updateDate
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        onChange: this.updateExercise
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        disabled: true,
+        selected: true
+      }, "--Select an exercise--"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "squat"
+      }, "Squat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "bench"
+      }, "Bench"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "deadlift"
+      }, "Deadlift")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Weight", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        step: "5",
+        min: "5",
+        value: this.state.weight,
+        onChange: this.updateWeight
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Reps", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        step: "1",
+        min: "1",
+        value: this.state.reps,
+        onChange: this.updateReps
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit
+      }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "personal-records"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, squatRecords.length, " SQUAT PRS"), squatRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, benchRecords.length, " BENCH PRS"), benchRecords.map(function (record) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: record.id,
+          record: record
+        });
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, deadliftRecords.length, " DEADLIFT PRS"), deadliftRecords.map(function (record) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: record.id,
+          record: record
+        });
+      }))));
     }
   }]);
 
@@ -709,7 +832,14 @@ var PersonalRecordIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(PersonalRecordIndexItem, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ITEM");
+      var _this$props$record = this.props.record,
+          date = _this$props$record.date,
+          weight = _this$props$record.weight,
+          reps = _this$props$record.reps,
+          exercise = _this$props$record.exercise;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "personal-record"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Exercise: ", exercise.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Weight: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Reps: ", reps)));
     }
   }]);
 
@@ -1471,7 +1601,7 @@ var fetchPersonalRecords = function fetchPersonalRecords(userId) {
 };
 var createPersonalRecord = function createPersonalRecord(userId, personal_record) {
   return $.ajax({
-    url: "/api/user/".concat(userId, "/personal_records"),
+    url: "/api/users/".concat(userId, "/personal_records"),
     method: 'POST',
     data: {
       personal_record: personal_record

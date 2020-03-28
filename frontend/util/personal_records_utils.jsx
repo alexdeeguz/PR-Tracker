@@ -7,7 +7,7 @@ export const fetchPersonalRecords = userId => (
 
 export const createPersonalRecord = (userId, personal_record) => (
     $.ajax({
-        url: `/api/user/${userId}/personal_records`,
+        url: `/api/users/${userId}/personal_records`,
         method: 'POST',
         data: { personal_record }
     })

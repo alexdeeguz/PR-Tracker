@@ -1,3 +1,12 @@
 // Place all the styles related to the api/personal_records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.personal-record, .personal-records {
+    display: flex;
+}
+
+.personal-records {
+    justify-content: space-around;
+}
+
