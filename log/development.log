@@ -13924,3 +13924,213 @@ Migrating to CreatePersonalRecords (20200328194354)
   ↳ bin/rails:9
   [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/alex/.rbenv/versions/2.5.1/bin/annotate:23
+Started GET "/" for ::1 at 2020-03-28 13:44:44 -0700
+  [1m[35m (20.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alex/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+Completed 200 OK in 1740ms (Views: 1725.7ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/api/users/4/weight_logs" for ::1 at 2020-03-28 13:44:54 -0700
+Processing by Api::WeightLogsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/weight_logs_controller.rb:6
+  Rendering api/weight_logs/index.json.jbuilder
+  [1m[36mWeightLog Load (1.3ms)[0m  [1m[34mSELECT "weight_logs".* FROM "weight_logs" WHERE "weight_logs"."user_id" = $1 ORDER BY date[0m  [["user_id", 4]]
+  ↳ app/views/api/weight_logs/index.json.jbuilder:1
+  Rendered api/weight_logs/index.json.jbuilder (23.2ms)
+Completed 200 OK in 166ms (Views: 41.6ms | ActiveRecord: 61.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:50:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 1129ms (Views: 1126.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:50:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Completed 200 OK in 826ms (Views: 825.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:50:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 478ms (Views: 476.9ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1820154780767085105)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddUserIdToPersonalRecord (20200328205148)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (54.3ms)[0m  [1m[35mALTER TABLE "personal_records" ADD "user_id" integer[0m
+  ↳ db/migrate/20200328205148_add_user_id_to_personal_record.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (24.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200328205148"]]
+  ↳ bin/rails:9
+  [1m[35m (31.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1820154780767085105)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alex/.rbenv/versions/2.5.1/bin/annotate:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPersonalRecord Create (55.8ms)[0m  [1m[32mINSERT INTO "personal_records" ("date", "weight", "exercise", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["date", "2020-01-01"], ["weight", 405], ["exercise", "deadlift"], ["created_at", "2020-03-28 20:55:21.393205"], ["updated_at", "2020-03-28 20:55:21.393205"], ["user_id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-03-28 13:55:26 -0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alex/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (1.8ms)
+Completed 200 OK in 302ms (Views: 290.4ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:55:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 37ms (Views: 35.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:55:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:57:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (2.1ms)
+Completed 200 OK in 981ms (Views: 978.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/personal_records" for ::1 at 2020-03-28 13:57:14 -0700
+Processing by Api::PersonalRecordsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/personal_records_controller.rb:4
+  Rendering api/personal_records/index.json.jbuilder
+  Rendered api/personal_records/index.json.jbuilder (41.0ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 0.5ms)
+
+
+
+NameError - uninitialized class variable @@personal_records in ActionView::CompiledTemplates:
+  app/views/api/personal_records/index.json.jbuilder:1:in `_app_views_api_personal_records_index_json_jbuilder___3590163524631762949_70172388703520'
+  app/controllers/api/personal_records_controller.rb:6:in `index'
+
+Started GET "/" for ::1 at 2020-03-28 13:57:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+Completed 200 OK in 45ms (Views: 43.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/4/personal_records" for ::1 at 2020-03-28 13:57:16 -0700
+Processing by Api::PersonalRecordsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/personal_records_controller.rb:4
+  Rendering api/personal_records/index.json.jbuilder
+  Rendered api/personal_records/index.json.jbuilder (19.4ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.6ms)
+
+
+
+NameError - uninitialized class variable @@personal_records in ActionView::CompiledTemplates:
+  app/views/api/personal_records/index.json.jbuilder:1:in `_app_views_api_personal_records_index_json_jbuilder___3590163524631762949_70172391698280'
+  app/controllers/api/personal_records_controller.rb:6:in `index'
+
+Started GET "/" for ::1 at 2020-03-28 13:57:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+Completed 200 OK in 215ms (Views: 213.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/4/personal_records" for ::1 at 2020-03-28 13:57:45 -0700
+Processing by Api::PersonalRecordsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/personal_records_controller.rb:4
+  Rendering api/personal_records/index.json.jbuilder
+  [1m[36mPersonalRecord Load (0.5ms)[0m  [1m[34mSELECT "personal_records".* FROM "personal_records" WHERE "personal_records"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/api/personal_records/index.json.jbuilder:1
+  Rendered api/personal_records/index.json.jbuilder (56.2ms)
+Completed 200 OK in 70ms (Views: 25.4ms | ActiveRecord: 42.9ms)
+
+
+Started GET "/" for ::1 at 2020-03-28 13:59:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_cPUtawRgryopTnsSo32Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+Completed 200 OK in 925ms (Views: 924.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/personal_records" for ::1 at 2020-03-28 13:59:17 -0700
+Processing by Api::PersonalRecordsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/personal_records_controller.rb:4
+  Rendering api/personal_records/index.json.jbuilder
+  [1m[36mPersonalRecord Load (1.1ms)[0m  [1m[34mSELECT "personal_records".* FROM "personal_records" WHERE "personal_records"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/api/personal_records/index.json.jbuilder:1
+  Rendered api/personal_records/index.json.jbuilder (4.0ms)
+Completed 200 OK in 48ms (Views: 43.4ms | ActiveRecord: 3.1ms)
+
+

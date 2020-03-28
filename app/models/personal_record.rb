@@ -9,9 +9,10 @@
 #  exercise   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 class PersonalRecord < ApplicationRecord
-    validates :date, :weight, :exercise, presence: true
+    validates :date, :weight, :exercise, :user_id, presence: true
 
     belongs_to :user,
         foreign_key: :user_id,

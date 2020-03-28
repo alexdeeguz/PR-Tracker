@@ -15,6 +15,6 @@ class Api::PersonalRecordsController < ApplicationController
     end
 
     def personal_record_params
-        params.require(:personal_record).permit(:date, :weight, :exercise, :reps)
+        params.require(:personal_record).permit(:user_id, :date, :weight, :exercise, :reps)
     end
 end
