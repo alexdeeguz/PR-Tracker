@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_215936) do
+ActiveRecord::Schema.define(version: 2020_03_28_061029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2020_03_27_215936) do
   create_table "weight_logs", force: :cascade do |t|
     t.integer "user_id"
     t.date "date"
-    t.decimal "body_fat_percentage"
-    t.decimal "weight"
-    t.decimal "lean_mass"
-    t.decimal "fat_mass"
+    t.float "body_fat_percentage"
+    t.float "weight"
+    t.float "lean_mass"
+    t.float "fat_mass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

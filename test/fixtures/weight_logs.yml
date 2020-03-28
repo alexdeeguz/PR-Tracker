@@ -5,10 +5,10 @@
 #  id                  :bigint           not null, primary key
 #  user_id             :integer
 #  date                :date
-#  body_fat_percentage :decimal(, )
-#  weight              :decimal(, )
-#  lean_mass           :decimal(, )
-#  fat_mass            :decimal(, )
+#  body_fat_percentage :float
+#  weight              :float
+#  lean_mass           :float
+#  fat_mass            :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #

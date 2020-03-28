@@ -10,8 +10,6 @@ class WeightLogIndex extends React.Component {
             date: this.dateToday(),
             weight: "",
             body_fat_percentage: ""
-            // lean_mass: this.lean_mass(),
-            // fat_mass: this.fat_mass()
         }
 
         this.updateBF = this.updateBF.bind(this)
@@ -19,14 +17,6 @@ class WeightLogIndex extends React.Component {
         this.updateWeight = this.updateWeight.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-    // lean_mass() {
-    //     return this.state.weight !== "" ? this.state.weight - this.state.fat_mass() : ""
-    // }
-
-    // fat_mass() {
-    //     return this.state.weight !== "" && this.state.body_fat_percentage !== "" ? ((this.state.body_fat_percentage / 100) * this.state.weight).toFixed(1) : ""
-    // }
 
     componentWillMount() {
         this.props.getWeightLogs(this.props.currentUser.id)
@@ -39,7 +29,7 @@ class WeightLogIndex extends React.Component {
 
     updateWeight(e) {
         this.setState({
-            weight: Number(e.target.value)
+            weight: parseInt(e.target.value)
         })
     }
     updateDate(e) {
@@ -49,7 +39,7 @@ class WeightLogIndex extends React.Component {
     }
     updateBF(e) {
         this.setState({
-            body_fat_percentage: Number(e.target.value)
+            body_fat_percentage: parseInt(e.target.value)
         })
     }
 
@@ -68,16 +58,10 @@ class WeightLogIndex extends React.Component {
     }
 
     changes() {
-        const lastIdx = this.props.weightLogs.length - 1
-        // const weightChange = this.props.weightLogs[lastIdx].weight - this.props.weightLogs[lastIdx-1].weight
-        // const leanMassChange = this.props.weightLogs[lastIdx].lean_mass - this.props.weightLogs[lastIdx-1].lean_mass
-        // console.log(weightChange)
-        // console.log(leanMassChange)
-        console.log(this.props.weightLogs[lastIdx].lean_mass)
+        
     }
 
     render() {
-        this.props.weightLogs.length > 1 ? this.changes() : ""
         const { weightLogs } = this.props
         return (
             <div>

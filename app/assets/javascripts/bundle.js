@@ -688,22 +688,14 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
       user_id: _this.props.currentUser.id,
       date: _this.dateToday(),
       weight: "",
-      body_fat_percentage: "" // lean_mass: this.lean_mass(),
-      // fat_mass: this.fat_mass()
-
+      body_fat_percentage: ""
     };
     _this.updateBF = _this.updateBF.bind(_assertThisInitialized(_this));
     _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
     _this.updateWeight = _this.updateWeight.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
-  } // lean_mass() {
-  //     return this.state.weight !== "" ? this.state.weight - this.state.fat_mass() : ""
-  // }
-  // fat_mass() {
-  //     return this.state.weight !== "" && this.state.body_fat_percentage !== "" ? ((this.state.body_fat_percentage / 100) * this.state.weight).toFixed(1) : ""
-  // }
-
+  }
 
   _createClass(WeightLogIndex, [{
     key: "componentWillMount",
@@ -720,7 +712,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "updateWeight",
     value: function updateWeight(e) {
       this.setState({
-        weight: Number(e.target.value)
+        weight: parseInt(e.target.value)
       });
     }
   }, {
@@ -734,7 +726,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "updateBF",
     value: function updateBF(e) {
       this.setState({
-        body_fat_percentage: Number(e.target.value)
+        body_fat_percentage: parseInt(e.target.value)
       });
     }
   }, {
@@ -757,18 +749,10 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "changes",
-    value: function changes() {
-      var lastIdx = this.props.weightLogs.length - 1; // const weightChange = this.props.weightLogs[lastIdx].weight - this.props.weightLogs[lastIdx-1].weight
-      // const leanMassChange = this.props.weightLogs[lastIdx].lean_mass - this.props.weightLogs[lastIdx-1].lean_mass
-      // console.log(weightChange)
-      // console.log(leanMassChange)
-
-      console.log(this.props.weightLogs[lastIdx].lean_mass);
-    }
+    value: function changes() {}
   }, {
     key: "render",
     value: function render() {
-      this.props.weightLogs.length > 1 ? this.changes() : "";
       var weightLogs = this.props.weightLogs;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOG INDEX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "changes-since-last-log"
@@ -1266,6 +1250,7 @@ var fetchWeightLogs = function fetchWeightLogs(userId) {
   });
 };
 var createWeightLog = function createWeightLog(userId, weight_log) {
+  debugger;
   return $.ajax({
     url: "/api/users/".concat(userId, "/weight_logs"),
     method: 'POST',
