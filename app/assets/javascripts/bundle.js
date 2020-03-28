@@ -712,7 +712,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "updateWeight",
     value: function updateWeight(e) {
       this.setState({
-        weight: parseInt(e.target.value)
+        weight: e.target.value
       });
     }
   }, {
@@ -726,7 +726,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "updateBF",
     value: function updateBF(e) {
       this.setState({
-        body_fat_percentage: parseInt(e.target.value)
+        body_fat_percentage: e.target.value
       });
     }
   }, {
@@ -747,9 +747,6 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
 
       return "".concat(year, "-").concat(month, "-").concat(day);
     }
-  }, {
-    key: "changes",
-    value: function changes() {}
   }, {
     key: "render",
     value: function render() {
@@ -831,22 +828,22 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
   function WeightLogIndexItem(props) {
     _classCallCheck(this, WeightLogIndexItem);
 
-    return _super.call(this, props); // this.convertToInteger()
-  } // convertToInteger() {
-  //     this.props.weightLog.body_fat_percentage = Number(this.props.weightLog.body_fat_percentage)
-  //     this.props.weightLog.weight = Number(this.props.weightLog.weight)
-  // }
-  // lean_mass() {
-  //     this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass()
-  //     return this.props.weightLog.lean_mass
-  // }
-  // fat_mass() {
-  //     this.props.weightLog.fat_mass = Number(((this.props.weightLog.body_fat_percentage / 100) * this.props.weightLog.weight).toFixed(1))
-  //     return this.props.weightLog.fat_mass
-  // }
-
+    return _super.call(this, props);
+  }
 
   _createClass(WeightLogIndexItem, [{
+    key: "lean_mass",
+    value: function lean_mass() {
+      this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass();
+      return this.props.weightLog.lean_mass;
+    }
+  }, {
+    key: "fat_mass",
+    value: function fat_mass() {
+      this.props.weightLog.fat_mass = Number((this.props.weightLog.body_fat_percentage / 100 * this.props.weightLog.weight).toFixed(1));
+      return this.props.weightLog.fat_mass;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props$weightLog = this.props.weightLog,
@@ -855,7 +852,7 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
           body_fat_percentage = _this$props$weightLog.body_fat_percentage;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LEAN MASS: ", this.lean_mass(), "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FAT MASS: ", this.fat_mass(), "LBS"));
     }
   }]);
 
@@ -1250,7 +1247,6 @@ var fetchWeightLogs = function fetchWeightLogs(userId) {
   });
 };
 var createWeightLog = function createWeightLog(userId, weight_log) {
-  debugger;
   return $.ajax({
     url: "/api/users/".concat(userId, "/weight_logs"),
     method: 'POST',

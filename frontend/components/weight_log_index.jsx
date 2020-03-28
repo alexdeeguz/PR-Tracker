@@ -29,7 +29,7 @@ class WeightLogIndex extends React.Component {
 
     updateWeight(e) {
         this.setState({
-            weight: parseInt(e.target.value)
+            weight: e.target.value
         })
     }
     updateDate(e) {
@@ -39,7 +39,7 @@ class WeightLogIndex extends React.Component {
     }
     updateBF(e) {
         this.setState({
-            body_fat_percentage: parseInt(e.target.value)
+            body_fat_percentage: e.target.value
         })
     }
 
@@ -55,10 +55,6 @@ class WeightLogIndex extends React.Component {
             day = `0${day}`
         }
         return `${year}-${month}-${day}`
-    }
-
-    changes() {
-        
     }
 
     render() {

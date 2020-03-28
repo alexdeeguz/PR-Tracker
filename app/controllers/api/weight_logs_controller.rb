@@ -22,6 +22,6 @@ class Api::WeightLogsController < ApplicationController
     end
 
     def weight_log_params
-        params.require(:weight_log).permit(:user_id, :date, :weight, :body_fat_percentage)
+        params.require(:weight_log).permit(:user_id, :date, :weight, :body_fat_percentage, :fat_mass, :lean_mass)
     end
 end
