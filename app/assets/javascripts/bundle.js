@@ -650,6 +650,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weight_log_index_item */ "./frontend/components/weight_log_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -684,12 +686,11 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, WeightLogIndex);
 
     _this = _super.call(this, props);
-    _this.state = {
+    _this.state = _defineProperty({
       user_id: _this.props.currentUser.id,
       date: _this.dateToday(),
-      weight: "",
       body_fat_percentage: ""
-    };
+    }, "body_fat_percentage", "");
     _this.updateBF = _this.updateBF.bind(_assertThisInitialized(_this));
     _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
     _this.updateWeight = _this.updateWeight.bind(_assertThisInitialized(_this));
@@ -706,13 +707,31 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.postWeightLog(this.props.currentUser.id, this.state);
+      var log = {
+        user_id: this.state.user_id,
+        date: this.state.date,
+        weight: this.state.weight,
+        body_fat_percentage: this.state.body_fat_percentage,
+        lean_mass: this.lean_mass(),
+        fat_mass: Number(this.fat_mass())
+      };
+      this.props.postWeightLog(this.props.currentUser.id, log);
+    }
+  }, {
+    key: "lean_mass",
+    value: function lean_mass() {
+      return this.state.weight - this.fat_mass();
+    }
+  }, {
+    key: "fat_mass",
+    value: function fat_mass() {
+      return (this.state.body_fat_percentage / 100 * this.state.weight).toFixed(1);
     }
   }, {
     key: "updateWeight",
     value: function updateWeight(e) {
       this.setState({
-        weight: e.target.value
+        weight: Number(e.target.value)
       });
     }
   }, {
@@ -726,7 +745,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "updateBF",
     value: function updateBF(e) {
       this.setState({
-        body_fat_percentage: e.target.value
+        body_fat_percentage: Number(e.target.value)
       });
     }
   }, {
@@ -748,12 +767,30 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
       return "".concat(year, "-").concat(month, "-").concat(day);
     }
   }, {
+    key: "changes",
+    value: function changes() {
+      var lastIdx = this.props.weightLogs.length - 1;
+      var log = this.props.weightLogs;
+      var weightChange = log.length > 1 ? log[lastIdx].weight - log[lastIdx - 1].weight : "";
+      var bfChange = log.length > 1 ? log[lastIdx].body_fat_percentage - log[lastIdx - 1].body_fat_percentage : "";
+      var lmChange = log.length > 1 ? log[lastIdx].lean_mass - log[lastIdx - 1].lean_mass : "";
+      var fmChange = log.length > 1 ? log[lastIdx].fat_mass - log[lastIdx - 1].fat_mass : "";
+      var changes = {
+        weightChange: weightChange ? weightChange.toFixed(1) : "",
+        bfChange: bfChange ? bfChange.toFixed(1) : "",
+        lmChange: lmChange ? lmChange.toFixed(1) : "",
+        fmChange: fmChange ? fmChange.toFixed(1) : ""
+      };
+      return changes;
+    }
+  }, {
     key: "render",
     value: function render() {
+      var changes = this.changes();
       var weightLogs = this.props.weightLogs;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOG INDEX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "changes-since-last-log"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Changes since last log: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Weight: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lean Mass: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fat Mass: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Changes since last log: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Weight: ", changes.weightChange), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Body Fat: ", changes.bfChange), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lean Mass: ", changes.lmChange), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fat Mass: ", changes.fmChange)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Date", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "date",
@@ -829,21 +866,17 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, WeightLogIndexItem);
 
     return _super.call(this, props);
-  }
+  } // lean_mass() {
+  //     this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass()
+  //     return this.props.weightLog.lean_mass
+  // }
+  // fat_mass() {
+  //     this.props.weightLog.fat_mass = Number(((this.props.weightLog.body_fat_percentage / 100) * this.props.weightLog.weight).toFixed(1))
+  //     return this.props.weightLog.fat_mass
+  // }
+
 
   _createClass(WeightLogIndexItem, [{
-    key: "lean_mass",
-    value: function lean_mass() {
-      this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass();
-      return this.props.weightLog.lean_mass;
-    }
-  }, {
-    key: "fat_mass",
-    value: function fat_mass() {
-      this.props.weightLog.fat_mass = Number((this.props.weightLog.body_fat_percentage / 100 * this.props.weightLog.weight).toFixed(1));
-      return this.props.weightLog.fat_mass;
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props$weightLog = this.props.weightLog,
@@ -852,7 +885,7 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
           body_fat_percentage = _this$props$weightLog.body_fat_percentage;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LEAN MASS: ", this.lean_mass(), "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FAT MASS: ", this.fat_mass(), "LBS"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"));
     }
   }]);
 
