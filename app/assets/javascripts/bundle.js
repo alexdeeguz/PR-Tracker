@@ -163,6 +163,55 @@ var sign_up = function sign_up(user) {
 
 /***/ }),
 
+/***/ "./frontend/actions/weight_log_actions.js":
+/*!************************************************!*\
+  !*** ./frontend/actions/weight_log_actions.js ***!
+  \************************************************/
+/*! exports provided: RECEIVE_WEIGHT_LOGS, RECEIVE_WEIGHT_LOG, getAllWeightLogs, postWeightLog */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WEIGHT_LOGS", function() { return RECEIVE_WEIGHT_LOGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WEIGHT_LOG", function() { return RECEIVE_WEIGHT_LOG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllWeightLogs", function() { return getAllWeightLogs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postWeightLog", function() { return postWeightLog; });
+/* harmony import */ var _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/weight_log_utils */ "./frontend/util/weight_log_utils.jsx");
+
+var RECEIVE_WEIGHT_LOGS = "RECEIVE_WEIGHT_LOGS";
+var RECEIVE_WEIGHT_LOG = "RECEIVE_WEIGHT_LOG";
+
+var receiveWeightLogs = function receiveWeightLogs(weightLogs) {
+  return {
+    type: RECEIVE_WEIGHT_LOGS,
+    weightLogs: weightLogs
+  };
+};
+
+var receiveWeightLog = function receiveWeightLog(weightLog) {
+  return {
+    type: RECEIVE_WEIGHT_LOG,
+    weightLog: weightLog
+  };
+};
+
+var getAllWeightLogs = function getAllWeightLogs(id) {
+  return function (dispatch) {
+    return _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__["fetchWeightLogs"](id).then(function (weightLogs) {
+      return dispatch(receiveWeightLogs(weightLogs));
+    });
+  };
+};
+var postWeightLog = function postWeightLog(id, log) {
+  return function (dispatch) {
+    return _util_weight_log_utils__WEBPACK_IMPORTED_MODULE_0__["createWeightLog"](id, log).then(function (log) {
+      return dispatch(receiveWeightLog(log));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -179,6 +228,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_home_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/home_container */ "./frontend/components/containers/home_container.jsx");
 /* harmony import */ var _containers_login_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/login_container */ "./frontend/components/containers/login_container.jsx");
 /* harmony import */ var _containers_signup_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/signup_container */ "./frontend/components/containers/signup_container.jsx");
+/* harmony import */ var _containers_weight_logs_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/weight_logs_container */ "./frontend/components/containers/weight_logs_container.jsx");
+
 
 
 
@@ -193,6 +244,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/signup",
     component: _containers_signup_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/weightlogs",
+    component: _containers_weight_logs_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _containers_home_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -268,7 +322,7 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    action: function action(user) {
+    login: function login(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["log_in"])(user));
     },
     removeErrors: function removeErrors() {
@@ -306,7 +360,7 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    action: function action(user) {
+    signup: function signup(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["sign_up"])(user));
     },
     removeErrors: function removeErrors() {
@@ -316,6 +370,44 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_session_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/containers/weight_logs_container.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/containers/weight_logs_container.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _weight_log_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../weight_log_index */ "./frontend/components/weight_log_index.jsx");
+/* harmony import */ var _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/weight_log_actions */ "./frontend/actions/weight_log_actions.js");
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    weightLogs: Object.values(state.entities.weightLogs)
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    getWeightLogs: function getWeightLogs(id) {
+      return dispatch(Object(_actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_2__["getAllWeightLogs"])(id));
+    },
+    postWeightLog: function postWeightLog(id, log) {
+      return dispatch(Object(_actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_2__["postWeightLog"])(id, log));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_weight_log_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -503,10 +595,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
-      console.log(this.props);
-      this.props.action(this.state).then(function () {
-        return _this2.props.history.push('/');
-      });
+
+      if (this.props.formType === 'login') {
+        this.props.login(this.state).then(function () {
+          return _this2.props.history.push('/');
+        });
+      } else {
+        this.props.signup(this.state).then(function () {
+          return _this2.props.history.push('/');
+        });
+      }
     }
   }, {
     key: "render",
@@ -535,6 +633,252 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SessionForm);
+
+/***/ }),
+
+/***/ "./frontend/components/weight_log_index.jsx":
+/*!**************************************************!*\
+  !*** ./frontend/components/weight_log_index.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weight_log_index_item */ "./frontend/components/weight_log_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(WeightLogIndex, _React$Component);
+
+  var _super = _createSuper(WeightLogIndex);
+
+  function WeightLogIndex(props) {
+    var _this;
+
+    _classCallCheck(this, WeightLogIndex);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      user_id: _this.props.currentUser.id,
+      date: _this.dateToday(),
+      weight: "",
+      body_fat_percentage: "" // lean_mass: this.lean_mass(),
+      // fat_mass: this.fat_mass()
+
+    };
+    _this.updateBF = _this.updateBF.bind(_assertThisInitialized(_this));
+    _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
+    _this.updateWeight = _this.updateWeight.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  } // lean_mass() {
+  //     return this.state.weight !== "" ? this.state.weight - this.state.fat_mass() : ""
+  // }
+  // fat_mass() {
+  //     return this.state.weight !== "" && this.state.body_fat_percentage !== "" ? ((this.state.body_fat_percentage / 100) * this.state.weight).toFixed(1) : ""
+  // }
+
+
+  _createClass(WeightLogIndex, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.getWeightLogs(this.props.currentUser.id);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.postWeightLog(this.props.currentUser.id, this.state);
+    }
+  }, {
+    key: "updateWeight",
+    value: function updateWeight(e) {
+      this.setState({
+        weight: Number(e.target.value)
+      });
+    }
+  }, {
+    key: "updateDate",
+    value: function updateDate(e) {
+      this.setState({
+        date: e.target.value
+      });
+    }
+  }, {
+    key: "updateBF",
+    value: function updateBF(e) {
+      this.setState({
+        body_fat_percentage: Number(e.target.value)
+      });
+    }
+  }, {
+    key: "dateToday",
+    value: function dateToday() {
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var year = date.getFullYear();
+
+      if (month < 10) {
+        month = "0".concat(month);
+      }
+
+      if (day < 10) {
+        day = "0".concat(day);
+      }
+
+      return "".concat(year, "-").concat(month, "-").concat(day);
+    }
+  }, {
+    key: "changes",
+    value: function changes() {
+      var lastIdx = this.props.weightLogs.length - 1; // const weightChange = this.props.weightLogs[lastIdx].weight - this.props.weightLogs[lastIdx-1].weight
+      // const leanMassChange = this.props.weightLogs[lastIdx].lean_mass - this.props.weightLogs[lastIdx-1].lean_mass
+      // console.log(weightChange)
+      // console.log(leanMassChange)
+
+      console.log(this.props.weightLogs[lastIdx].lean_mass);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      this.props.weightLogs.length > 1 ? this.changes() : "";
+      var weightLogs = this.props.weightLogs;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOG INDEX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "changes-since-last-log"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Changes since last log: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Weight: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lean Mass: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fat Mass: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Date", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "date",
+        value: this.state.date,
+        onChange: this.updateDate
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Weight", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        step: "0.1",
+        onChange: this.updateWeight
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Body Fat Percentage", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        step: "0.1",
+        onChange: this.updateBF
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }, "LOG WEIGHT")), weightLogs.map(function (log) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: log.id,
+          weightLog: log
+        });
+      }));
+    }
+  }]);
+
+  return WeightLogIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (WeightLogIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/weight_log_index_item.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/weight_log_index_item.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(WeightLogIndexItem, _React$Component);
+
+  var _super = _createSuper(WeightLogIndexItem);
+
+  function WeightLogIndexItem(props) {
+    _classCallCheck(this, WeightLogIndexItem);
+
+    return _super.call(this, props); // this.convertToInteger()
+  } // convertToInteger() {
+  //     this.props.weightLog.body_fat_percentage = Number(this.props.weightLog.body_fat_percentage)
+  //     this.props.weightLog.weight = Number(this.props.weightLog.weight)
+  // }
+  // lean_mass() {
+  //     this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass()
+  //     return this.props.weightLog.lean_mass
+  // }
+  // fat_mass() {
+  //     this.props.weightLog.fat_mass = Number(((this.props.weightLog.body_fat_percentage / 100) * this.props.weightLog.weight).toFixed(1))
+  //     return this.props.weightLog.fat_mass
+  // }
+
+
+  _createClass(WeightLogIndexItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props$weightLog = this.props.weightLog,
+          date = _this$props$weightLog.date,
+          weight = _this$props$weightLog.weight,
+          body_fat_percentage = _this$props$weightLog.body_fat_percentage;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weight-log"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"));
+    }
+  }]);
+
+  return WeightLogIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (WeightLogIndexItem);
 
 /***/ }),
 
@@ -596,10 +940,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _weight_logs_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weight_logs_reducer */ "./frontend/reducers/weight_logs_reducer.js");
+
 
 
 var EntitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  weightLogs: _weight_logs_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (EntitiesReducer);
 
@@ -757,6 +1104,41 @@ var UsersReducer = function UsersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/weight_logs_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/weight_logs_reducer.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/weight_log_actions */ "./frontend/actions/weight_log_actions.js");
+
+
+var WeightLogsReducer = function WeightLogsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WEIGHT_LOGS"]:
+      return action.weightLogs;
+
+    case _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WEIGHT_LOG"]:
+      newState[action.weightLog.id] = action.weightLog;
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WeightLogsReducer);
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -861,6 +1243,35 @@ var logout = function logout() {
   return $.ajax({
     url: '/api/sessions',
     method: 'DELETE'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/weight_log_utils.jsx":
+/*!********************************************!*\
+  !*** ./frontend/util/weight_log_utils.jsx ***!
+  \********************************************/
+/*! exports provided: fetchWeightLogs, createWeightLog */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchWeightLogs", function() { return fetchWeightLogs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createWeightLog", function() { return createWeightLog; });
+var fetchWeightLogs = function fetchWeightLogs(userId) {
+  return $.ajax({
+    url: "/api/users/".concat(userId, "/weight_logs"),
+    method: 'GET'
+  });
+};
+var createWeightLog = function createWeightLog(userId, weight_log) {
+  return $.ajax({
+    url: "/api/users/".concat(userId, "/weight_logs"),
+    method: 'POST',
+    data: {
+      weight_log: weight_log
+    }
   });
 };
 

@@ -10,7 +10,8 @@
 #  session_token   :string
 #
 class User < ApplicationRecord
-    validates :username, :session_token, :password_digest, presence: true
+    validates :username, :session_token, presence: true, uniqueness: true
+    validates :password_digest, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
     before_validation :ensure_session_token
 
@@ -41,4 +42,8 @@ class User < ApplicationRecord
     def is_password?(password)
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
+
+    has_many :weight_logs,
+        foreign_key: :user_id,
+        class_name: :WeightLog
 end

@@ -1,0 +1,1 @@
+json.extract! @weight_log, :id, :date, :weight, :body_fat_percentage

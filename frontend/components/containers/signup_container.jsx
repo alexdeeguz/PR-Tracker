@@ -8,7 +8,7 @@ const mSTP = (state) => ({
 })
 
 const mDTP = dispatch => ({
-    action: (user) => dispatch(sign_up(user)),
+    signup: (user) => dispatch(sign_up(user)),
     removeErrors: () => dispatch(removeErrors())
 })
 
