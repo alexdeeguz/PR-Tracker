@@ -46,4 +46,8 @@ class User < ApplicationRecord
     has_many :weight_logs,
         foreign_key: :user_id,
         class_name: :WeightLog
+
+    has_many :personal_records,
+        foreign_key: :user_id,
+        class_name: :PersonalRecord
 end

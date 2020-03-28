@@ -1,0 +1,2 @@
+module Api::PersonalRecordsHelper
+end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :sessions, only: [:create, :destroy]
     resources :users, only: [:create] do 
       resources :weight_logs, only: [:index, :destroy, :create]
+      resources :personal_records, only: [:index, :destroy, :create]
     end
   end
 end
