@@ -7,7 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
+
+    <script type="text/javascript">
+      window.linkedinURL = "<%= image_url('linkedin.png') %>";
+      window.githubURL = "<%= image_url('github.png') %>";
+    </script>
+
     <% if logged_in? %>
       <script type="text/javascript">
         window.currentUser = <%= render(

@@ -1,0 +1,72 @@
+.general {
+    width: 50vw;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#space {
+    height: 10%;
+}
+
+.home-container {
+    background-color: black;
+    color: white;
+    height: 120vh;
+}
+
+.general > h1 {
+    margin: 0;
+    border-bottom: 1px solid white;
+    font-size: 7vh;
+}
+
+  .icon {
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+    padding: 1px;
+    margin: 0 5px;
+    transition: box-shadow 0.1s linear;
+    &:hover {
+      box-shadow: 0 0 1rem 1px white;
+      cursor: pointer;
+    }
+  }
+
+.general > p {
+    font-size: 4vh;
+}
+
+.general > button {
+    height: 10vh;
+    width: 25vw;
+    font-size: 4vh;
+    color: black;
+    background-color: #ff7000;
+    &:hover {
+        background-color: #ffa500;
+        cursor: pointer;
+    }
+    border: none;
+}
+
+.app-info {
+    background-color: #ff7000;
+    height: 40%;
+}
+
+.app-info > div {
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid green;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.feature-info {
+    // border: 1px solid white;
+    width: 25%;
+    text-align: center;
+    margin-top: 5%;
+}
