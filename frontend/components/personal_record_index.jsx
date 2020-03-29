@@ -12,7 +12,7 @@ class PersonalRecordIndex extends React.Component {
             weight: "",
             reps: 1,
             filter: 'all',
-            selected: ""
+            selected: 'ALL'
         }
 
         this.updateDate = this.updateDate.bind(this)
@@ -24,6 +24,10 @@ class PersonalRecordIndex extends React.Component {
 
     componentWillMount() {
         this.props.getAllPersonalRecords(this.props.currentUser.id)
+    }
+
+    componentWillUnmount() {
+        this.props.removeErrors()
     }
 
     dateToday() {
@@ -108,14 +112,15 @@ class PersonalRecordIndex extends React.Component {
                         <option value="bench">Bench</option>
                         <option value="deadlift">Deadlift</option>
                     </select>
-                    <label>Weight
+                    <label>Weight:
                         <input type="number" step="5" min="5" value={this.state.weight} onChange={this.updateWeight}/>
                     </label>
-                    <label>Reps
+                    <label>Reps:
                         <input type="number" step="1" min="1" value={this.state.reps} onChange={this.updateReps}/>
                     </label>
                     <button onClick={this.handleSubmit}>LOG PR</button>
                 </form>
+                <p className="errors">{this.props.errors.join(". ")}</p>
                 
                 <div className="pr-filters"> 
                     <li id={this.state.selected === 'ALL' ? 'selected' : "non-selected"} onClick={(e) => this.setState({filter: 'all', selected: e.target.innerHTML})}>ALL</li>
@@ -126,27 +131,33 @@ class PersonalRecordIndex extends React.Component {
                 <div className="personal-records">
                     <div>
                         {squatRecords.length === 1 ? <h2>{squatRecords.length} SQUAT PR</h2> : <h2>{squatRecords.length} SQUAT PRS</h2>}
-                        {
-                            squatRecords.map(record => (
-                                <PersonalRecordIndexItem key={record.id} record={record} />
-                            ))
-                        }
+                        <div className="pr-exercise-container">
+                            {
+                                squatRecords.map(record => (
+                                    <PersonalRecordIndexItem key={record.id} record={record} />
+                                ))
+                            }
+                        </div>
                     </div>
                     <div>
                         {benchRecords.length === 1 ? <h2>{benchRecords.length} BENCH PR</h2> : <h2>{benchRecords.length} BENCH PRS</h2>}
-                        {
-                            benchRecords.map(record => (
-                                <PersonalRecordIndexItem key={record.id} record={record} />
-                            ))
-                        }
+                        <div className="pr-exercise-container">
+                            {
+                                benchRecords.map(record => (
+                                    <PersonalRecordIndexItem key={record.id} record={record} />
+                                ))
+                            }
+                        </div>
                     </div>
                     <div>
                         {deadliftRecords.length === 1 ? <h2>{deadliftRecords.length} DEADLIFT PR</h2> : <h2>{deadliftRecords.length} DEADLIFT PRS</h2>}
-                        {
-                            deadliftRecords.map(record => (
-                                <PersonalRecordIndexItem key={record.id} record={record} />
-                            ))
-                        }
+                        <div className="pr-exercise-container">
+                            {
+                                deadliftRecords.map(record => (
+                                    <PersonalRecordIndexItem key={record.id} record={record} />
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

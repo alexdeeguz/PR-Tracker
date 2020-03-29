@@ -1,4 +1,4 @@
-import { RECEIVE_WEIGHT_LOGS, RECEIVE_WEIGHT_LOG, RECEIVE_ERRORS } from '../actions/weight_log_actions'
+import { RECEIVE_WEIGHT_LOGS, RECEIVE_WEIGHT_LOG } from '../actions/weight_log_actions'
 
 const WeightLogsReducer = (state = {}, action) => {
     Object.freeze(state)

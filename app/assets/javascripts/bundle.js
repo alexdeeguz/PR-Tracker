@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllPersonalRecords", function() { return getAllPersonalRecords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postPersonalRecord", function() { return postPersonalRecord; });
 /* harmony import */ var _util_personal_records_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/personal_records_utils */ "./frontend/util/personal_records_utils.jsx");
+/* harmony import */ var _weight_log_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weight_log_actions */ "./frontend/actions/weight_log_actions.js");
+
 
 var RECEIVE_PERSONAL_RECORDS = "RECEIVE_PERSONAL_RECORDS";
 var RECEIVE_PERSONAL_RECORD = "RECEIVE_PERSONAL_RECORD";
@@ -118,6 +120,13 @@ var receivePersonalRecord = function receivePersonalRecord(record) {
   };
 };
 
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: _weight_log_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ERRORS"],
+    errors: errors
+  };
+};
+
 var getAllPersonalRecords = function getAllPersonalRecords(userId) {
   return function (dispatch) {
     return _util_personal_records_utils__WEBPACK_IMPORTED_MODULE_0__["fetchPersonalRecords"](userId).then(function (records) {
@@ -129,6 +138,8 @@ var postPersonalRecord = function postPersonalRecord(userId, record) {
   return function (dispatch) {
     return _util_personal_records_utils__WEBPACK_IMPORTED_MODULE_0__["createPersonalRecord"](userId, record).then(function (record) {
       return dispatch(receivePersonalRecord(record));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
     });
   };
 };
@@ -451,6 +462,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _personal_record_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../personal_record_index */ "./frontend/components/personal_record_index.jsx");
 /* harmony import */ var _actions_personal_record_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/personal_record_actions */ "./frontend/actions/personal_record_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -458,7 +471,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    personalRecords: Object.values(state.entities.personalRecords)
+    personalRecords: Object.values(state.entities.personalRecords),
+    errors: state.errors.session
   };
 };
 
@@ -469,6 +483,9 @@ var mDTP = function mDTP(dispatch) {
     },
     postPersonalRecord: function postPersonalRecord(id, record) {
       return dispatch(Object(_actions_personal_record_actions__WEBPACK_IMPORTED_MODULE_2__["postPersonalRecord"])(id, record));
+    },
+    removeErrors: function removeErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["removeErrors"])());
     }
   };
 };
@@ -936,7 +953,7 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       weight: "",
       reps: 1,
       filter: 'all',
-      selected: ""
+      selected: 'ALL'
     };
     _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
     _this.updateExercise = _this.updateExercise.bind(_assertThisInitialized(_this));
@@ -950,6 +967,11 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.getAllPersonalRecords(this.props.currentUser.id);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeErrors();
     }
   }, {
     key: "dateToday",
@@ -1089,13 +1111,13 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         value: "bench"
       }, "Bench"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "deadlift"
-      }, "Deadlift")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Weight", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Deadlift")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Weight:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         step: "5",
         min: "5",
         value: this.state.weight,
         onChange: this.updateWeight
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Reps", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Reps:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         step: "1",
         min: "1",
@@ -1103,7 +1125,9 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateReps
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "errors"
+      }, this.props.errors.join(". ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pr-filters"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: this.state.selected === 'ALL' ? 'selected' : "non-selected",
@@ -1131,22 +1155,28 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         }
       }, "REP MAX")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "personal-records"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, squatRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PRS"), squatRecords.map(function (record) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, squatRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PRS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pr-exercise-container"
+      }, squatRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, benchRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, benchRecords.length, " BENCH PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, benchRecords.length, " BENCH PRS"), benchRecords.map(function (record) {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, benchRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, benchRecords.length, " BENCH PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, benchRecords.length, " BENCH PRS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pr-exercise-container"
+      }, benchRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, deadliftRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, deadliftRecords.length, " DEADLIFT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, deadliftRecords.length, " DEADLIFT PRS"), deadliftRecords.map(function (record) {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, deadliftRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, deadliftRecords.length, " DEADLIFT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, deadliftRecords.length, " DEADLIFT PRS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pr-exercise-container"
+      }, deadliftRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: record.id,
           record: record
         });
-      }))));
+      })))));
     }
   }]);
 

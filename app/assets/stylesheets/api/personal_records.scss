@@ -8,7 +8,11 @@
 
 .personal-records {
     justify-content: space-around;
-    // margin-top: 5%;
+    height: 80vh;
+}
+
+.personal-records-container {
+    text-align: center;
 }
 
 .personal-records-container > h1 {
@@ -68,6 +72,12 @@
     }
 }
 
+.pr-exercise-container {
+    overflow: auto;
+    // border: 1px solid red;
+    height: 85%;
+}
+
 .personal-records > div {
     // border: 1px solid white;
     width: 33%;
@@ -87,6 +97,7 @@
     border-bottom: 1px solid #ff7000;
     margin-right: 20%;
     margin-left: 20%;
+    // border: 1px solid lime;
 }
 
 .pr-filters {
@@ -129,7 +140,7 @@
 }
 
 #non-selected:after {
-  background: none repeat scroll 0 0 transparent;
+  background: none repeat scroll 0 0 rent;
   bottom: 0;
   content: "";
   display: block;
@@ -138,4 +149,13 @@
   background: #ff7000;
   transition: width 0.2s ease 0s, left 0.5s ease 0s;
   width: 0;
+}
+
+.log-pr-form > select {
+  font-size: 1rem;
+  display: inline-block;
+  margin: 3em 2em;
+  width: 350px;
+  position: relative;
+  cursor: pointer;
 }
