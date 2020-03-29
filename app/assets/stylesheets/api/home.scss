@@ -19,6 +19,7 @@
     margin: 0;
     border-bottom: 1px solid white;
     font-size: 7vh;
+    margin-top: 5%;
 }
 
   .icon {
@@ -32,6 +33,12 @@
       box-shadow: 0 0 1rem 1px white;
       cursor: pointer;
     }
+  }
+
+  .icons {
+      position: absolute;
+      top: 3%;
+      right: 5%;
   }
 
 .general > p {

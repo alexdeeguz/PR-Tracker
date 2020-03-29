@@ -40,8 +40,10 @@ class Home extends React.Component {
                 <div id="space"></div>
                 <div className="general">
                     <h1 id="title">PERSONAL RECORD TRACKER</h1>
-                    <a href="https://www.linkedin.com/in/alex-de-guzman/"><img className="icon" src={window.linkedinURL} /></a>
-                    <a href="https://github.com/alexdeeguz/PR-Tracker"><img className="icon" src={window.githubURL} /></a>
+                    <div className="icons">
+                        <a href="https://www.linkedin.com/in/alex-de-guzman/"><img className="icon" src={window.linkedinURL} /></a>
+                        <a href="https://github.com/alexdeeguz/PR-Tracker"><img className="icon" src={window.githubURL} /></a>
+                    </div>
                     <p>Join now to keep track of personal records and body composition logs to reach your fitness goals!</p>
                     <button onClick={this.openModal}>LOGIN OR SIGNUP</button>
                     <p>Learn More</p>

@@ -8,7 +8,7 @@
 
 .personal-records {
     justify-content: space-around;
-    margin-top: 5%;
+    // margin-top: 5%;
 }
 
 .personal-records-container > h1 {
@@ -35,7 +35,7 @@
 
 .log-pr-form {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -87,4 +87,55 @@
     border-bottom: 1px solid #ff7000;
     margin-right: 20%;
     margin-left: 20%;
+}
+
+.pr-filters {
+    display: flex;
+    justify-content: space-around;
+    // border: 1px solid red;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#selected {
+  border-bottom: 2px solid #ff7000; 
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  letter-spacing: .25em;
+  display: inline-block;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#non-selected  {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  letter-spacing: .25em;
+  display: inline-block;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#non-selected:hover:after {
+  width:100%;
+  left: 0;
+}
+
+#non-selected:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  background: #ff7000;
+  transition: width 0.2s ease 0s, left 0.5s ease 0s;
+  width: 0;
 }

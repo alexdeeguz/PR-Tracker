@@ -817,7 +817,9 @@ var Home = /*#__PURE__*/function (_React$Component) {
         className: "general"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "title"
-      }, "PERSONAL RECORD TRACKER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "PERSONAL RECORD TRACKER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/alex-de-guzman/"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "icon",
@@ -827,7 +829,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "icon",
         src: window.githubURL
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Join now to keep track of personal records and body composition logs to reach your fitness goals!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Join now to keep track of personal records and body composition logs to reach your fitness goals!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.openModal
       }, "LOGIN OR SIGNUP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Learn More"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u2193\u2193\u2193")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "app-info"
@@ -932,7 +934,9 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       date: _this.dateToday(),
       exercise: "",
       weight: "",
-      reps: 1
+      reps: 1,
+      filter: 'all',
+      selected: ""
     };
     _this.updateDate = _this.updateDate.bind(_assertThisInitialized(_this));
     _this.updateExercise = _this.updateExercise.bind(_assertThisInitialized(_this));
@@ -997,27 +1001,75 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.postPersonalRecord(this.props.currentUser.id, this.state);
+      var record = {
+        user_id: this.state.user_id,
+        date: this.state.date,
+        exercise: this.state.exercise,
+        weight: this.state.weight,
+        reps: this.state.reps
+      };
+      this.props.postPersonalRecord(this.props.currentUser.id, record);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var personalRecords = this.props.personalRecords;
-      var squatRecords = personalRecords.filter(function (record) {
-        return record.exercise === "squat";
-      }).sort(function (a, b) {
-        return a.weight - b.weight;
-      });
-      var benchRecords = personalRecords.filter(function (record) {
-        return record.exercise === "bench";
-      }).sort(function (a, b) {
-        return a.weight - b.weight;
-      });
-      var deadliftRecords = personalRecords.filter(function (record) {
-        return record.exercise === "deadlift";
-      }).sort(function (a, b) {
-        return a.weight - b.weight;
-      });
+      var squatRecords;
+      var benchRecords;
+      var deadliftRecords;
+
+      if (this.state.filter === 'all') {
+        squatRecords = personalRecords.filter(function (record) {
+          return record.exercise === "squat";
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        benchRecords = personalRecords.filter(function (record) {
+          return record.exercise === "bench";
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        deadliftRecords = personalRecords.filter(function (record) {
+          return record.exercise === "deadlift";
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+      } else if (this.state.filter === '1rm') {
+        squatRecords = personalRecords.filter(function (record) {
+          return record.exercise === "squat" && record.reps === 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        benchRecords = personalRecords.filter(function (record) {
+          return record.exercise === "bench" && record.reps === 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        deadliftRecords = personalRecords.filter(function (record) {
+          return record.exercise === "deadlift" && record.reps === 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+      } else if (this.state.filter === 'rm') {
+        squatRecords = personalRecords.filter(function (record) {
+          return record.exercise === "squat" && record.reps > 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        benchRecords = personalRecords.filter(function (record) {
+          return record.exercise === "bench" && record.reps > 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+        deadliftRecords = personalRecords.filter(function (record) {
+          return record.exercise === "deadlift" && record.reps > 1;
+        }).sort(function (a, b) {
+          return a.weight - b.weight;
+        });
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "personal-records-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "YOU HAVE HIT ", personalRecords.length, " PERSONAL RECORDS!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1052,6 +1104,32 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pr-filters"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: this.state.selected === 'ALL' ? 'selected' : "non-selected",
+        onClick: function onClick(e) {
+          return _this2.setState({
+            filter: 'all',
+            selected: e.target.innerHTML
+          });
+        }
+      }, "ALL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: this.state.selected === '1 REP MAX' ? 'selected' : "non-selected",
+        onClick: function onClick(e) {
+          return _this2.setState({
+            filter: '1rm',
+            selected: e.target.innerHTML
+          });
+        }
+      }, "1 REP MAX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: this.state.selected === 'REP MAX' ? 'selected' : "non-selected",
+        onClick: function onClick(e) {
+          return _this2.setState({
+            filter: 'rm',
+            selected: e.target.innerHTML
+          });
+        }
+      }, "REP MAX")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "personal-records"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, squatRecords.length === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PR") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, squatRecords.length, " SQUAT PRS"), squatRecords.map(function (record) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_personal_record_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {

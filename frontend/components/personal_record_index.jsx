@@ -10,7 +10,9 @@ class PersonalRecordIndex extends React.Component {
             date: this.dateToday(),
             exercise: "",
             weight: "",
-            reps: 1
+            reps: 1,
+            filter: 'all',
+            selected: ""
         }
 
         this.updateDate = this.updateDate.bind(this)
@@ -64,14 +66,34 @@ class PersonalRecordIndex extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.postPersonalRecord(this.props.currentUser.id, this.state)
+        const record = {
+            user_id: this.state.user_id,
+            date: this.state.date,
+            exercise: this.state.exercise,
+            weight: this.state.weight,
+            reps: this.state.reps
+        }
+        this.props.postPersonalRecord(this.props.currentUser.id, record)
     }
 
     render() {
         const { personalRecords } = this.props
-        const squatRecords = personalRecords.filter(record => record.exercise === "squat").sort((a, b) => a.weight - b.weight)
-        const benchRecords = personalRecords.filter(record => record.exercise === "bench").sort((a, b) => a.weight - b.weight)
-        const deadliftRecords = personalRecords.filter(record => record.exercise === "deadlift").sort((a,b) => a.weight - b.weight)
+        let squatRecords;
+        let benchRecords;
+        let deadliftRecords;
+        if (this.state.filter === 'all') {
+             squatRecords = personalRecords.filter(record => record.exercise === "squat").sort((a, b) => a.weight - b.weight)
+             benchRecords = personalRecords.filter(record => record.exercise === "bench").sort((a, b) => a.weight - b.weight)
+             deadliftRecords = personalRecords.filter(record => record.exercise === "deadlift").sort((a,b) => a.weight - b.weight)
+        } else if (this.state.filter === '1rm') {
+            squatRecords = personalRecords.filter(record => record.exercise === "squat" && record.reps === 1).sort((a, b) => a.weight - b.weight)
+            benchRecords = personalRecords.filter(record => record.exercise === "bench" && record.reps === 1).sort((a, b) => a.weight - b.weight)
+            deadliftRecords = personalRecords.filter(record => record.exercise === "deadlift" && record.reps === 1).sort((a, b) => a.weight - b.weight)
+        } else if (this.state.filter === 'rm') {
+            squatRecords = personalRecords.filter(record => record.exercise === "squat" && record.reps > 1).sort((a, b) => a.weight - b.weight)
+            benchRecords = personalRecords.filter(record => record.exercise === "bench" && record.reps > 1).sort((a, b) => a.weight - b.weight)
+            deadliftRecords = personalRecords.filter(record => record.exercise === "deadlift" && record.reps > 1).sort((a, b) => a.weight - b.weight)
+        }
         return (
             <div className="personal-records-container">
                 <h1>YOU HAVE HIT {personalRecords.length} PERSONAL RECORDS!</h1>
@@ -94,6 +116,12 @@ class PersonalRecordIndex extends React.Component {
                     </label>
                     <button onClick={this.handleSubmit}>LOG PR</button>
                 </form>
+                
+                <div className="pr-filters"> 
+                    <li id={this.state.selected === 'ALL' ? 'selected' : "non-selected"} onClick={(e) => this.setState({filter: 'all', selected: e.target.innerHTML})}>ALL</li>
+                    <li id={this.state.selected === '1 REP MAX' ? 'selected' : "non-selected"} onClick={(e) => this.setState({ filter: '1rm', selected: e.target.innerHTML })}>1 REP MAX</li>
+                    <li id={this.state.selected === 'REP MAX' ? 'selected' : "non-selected"} onClick={(e) => this.setState({ filter: 'rm', selected: e.target.innerHTML })}>REP MAX</li>
+                </div>
 
                 <div className="personal-records">
                     <div>
