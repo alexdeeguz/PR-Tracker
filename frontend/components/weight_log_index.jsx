@@ -105,7 +105,7 @@ class WeightLogIndex extends React.Component {
                     <div className="changes">
                         <div>
                             <p>Weight:</p> 
-                            <p>{changes.weightChange}</p>
+                            {changes.weightChange > 0 ? <p>+{changes.weightChange}</p> : <p>{changes.weightChange}</p>}
                         </div>
                         <div>
                             <p>Body Fat:</p> 
@@ -121,14 +121,14 @@ class WeightLogIndex extends React.Component {
                          </div>
                     </div>
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Date
+                <form className="log-weight-form" onSubmit={this.handleSubmit}>
+                    <label>
                         <input type="date" value={this.state.date} onChange={this.updateDate}/>
                     </label>
-                    <label>Weight
+                    <label>Enter Weight: 
                         <input type="number" step="0.1" onChange={this.updateWeight}/>
                     </label>
-                    <label>Body Fat Percentage
+                    <label>Enter Body Fat Percentage: 
                         <input type="number" step="0.1" onChange={this.updateBF}/>
                     </label>
                     <button type="submit">LOG WEIGHT</button>
