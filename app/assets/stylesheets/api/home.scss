@@ -12,7 +12,7 @@
 .home-container {
     background-color: black;
     color: white;
-    height: 120vh;
+    height: 100%;
 }
 
 .general > h1 {
@@ -49,6 +49,7 @@
         cursor: pointer;
     }
     border: none;
+    outline: none;
 }
 
 .app-info {
@@ -69,4 +70,8 @@
     width: 25%;
     text-align: center;
     margin-top: 5%;
+}
+
+.feature-info > p {
+    font-size: 20px;
 }

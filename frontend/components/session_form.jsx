@@ -13,6 +13,10 @@ class SessionForm extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.removeErrors()
+    }
+
     updateUsername(e) {
         this.setState({
             username: e.target.value
@@ -39,18 +43,16 @@ class SessionForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.props.formType}</h1>
+            <div className="session-form">
+                <h1>{this.props.formType.toUpperCase()}</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Username
-                        <input type="text" onChange={this.updateUsername} value={this.state.username}/>
-                    </label>
-                    <label>Password
-                        <input type="text" onChange={this.updatePassword} value={this.state.password}/>
-                    </label>
-                    <button type="submit">{this.props.formType.toUpperCase()}</button>
+                        <input type="text" onChange={this.updateUsername} value={this.state.username} placeholder="Username"/>
+                    <br/>
+                        <input type="text" onChange={this.updatePassword} value={this.state.password} placeholder="Password"/>
+                    <br/>
+                    <button id="button" type="submit">{this.props.formType.toUpperCase()}</button>
                 </form>
-                {this.props.formType === "sign up" ? <Link to="/login">Log in</Link> : <Link to="/signup">Sign up</Link>} 
+                <p className="errors">{this.props.errors.join(". ")}</p>
             </div>
         )
     }

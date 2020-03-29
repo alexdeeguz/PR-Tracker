@@ -9,7 +9,7 @@ class Header extends React.Component {
     logout(e) {
         e.preventDefault()
         this.props.logout()
-            .then(() => this.props.history.push('/login'))
+            .then(() => this.props.history.push('/'))
     }
 
     render() {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Home from '../home'
-import { sign_up, log_in, log_out } from '../../actions/session_actions'
+import { sign_up, log_in, log_out, removeErrors } from '../../actions/session_actions'
 
 const mSTP = (state, ownProps) => ({
     currentUser: state.entities.users[state.session.id]
