@@ -99,7 +99,7 @@ class WeightLogIndex extends React.Component {
         const { weightLogs } = this.props
         return (
             <div className="weight-log-index-container">
-                <h1>WEIGHT LOG INDEX</h1>
+                <h1>WEIGHT LOGS</h1>
                 <div className="changes-since-last-log">
                     <h3>Changes since last log: </h3>
                     <div className="changes">

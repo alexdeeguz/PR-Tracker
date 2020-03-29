@@ -8,10 +8,10 @@ class PersonalRecordIndexItem extends React.Component {
     render() {
         const { date, weight, reps, exercise } = this.props.record
         return (
-            <div>
+            <div className="record-container">
                 <div className="personal-record">
                     <p>{date}</p>
-                    <p>Exercise: {exercise.toUpperCase()}</p>
+                    {/* <p>Exercise: {exercise.toUpperCase()}</p> */}
                     <p>Weight: {weight}LBS</p>
                     <p>Reps: {reps}</p>
                 </div>

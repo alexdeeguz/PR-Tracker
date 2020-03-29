@@ -8,5 +8,83 @@
 
 .personal-records {
     justify-content: space-around;
+    margin-top: 5%;
 }
 
+.personal-records-container > h1 {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ff7000;
+    padding: 10px;
+}
+
+.personal-records > div > h2 {
+    color: #ff7000;
+}
+
+.log-pr-form {
+    width: 100%;
+}
+
+.log-pr-form > label > input, .log-pr-form > select {
+    height: 5vh;
+    font-size: 3vh;
+}
+
+.log-pr-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-pr-form > button {
+	border-radius:6px;
+    border:1px solid white;
+    background-color: black;
+    color: white;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+    width: 10%;
+    height: 6vh;
+    text-decoration:none;
+    outline: none;
+}
+.log-pr-form > button:hover {
+    background-color:white;
+    color: black;
+}
+
+.record-container {
+    // background-color: #ff7000;
+    padding-left: 10px;
+    padding-right: 10px;
+    &:hover {
+        background-color: #ff7000;
+    }
+}
+
+.personal-records > div {
+    // border: 1px solid white;
+    width: 33%;
+    border-right: 1px solid white;
+}
+
+.personal-record {
+    display: flex;
+    justify-content: space-around;
+    font-size: 3vh;
+}
+
+.personal-records > div > h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #ff7000;
+    margin-right: 20%;
+    margin-left: 20%;
+}

@@ -73,9 +73,9 @@ class PersonalRecordIndex extends React.Component {
         const benchRecords = personalRecords.filter(record => record.exercise === "bench").sort((a, b) => a.weight - b.weight)
         const deadliftRecords = personalRecords.filter(record => record.exercise === "deadlift").sort((a,b) => a.weight - b.weight)
         return (
-            <div>
-                <h2>YOU HAVE HIT {personalRecords.length} PERSONAL RECORDS!</h2>
-                <form>
+            <div className="personal-records-container">
+                <h1>YOU HAVE HIT {personalRecords.length} PERSONAL RECORDS!</h1>
+                <form className="log-pr-form">
                     <h3>Log a PR: </h3>
                     <label>
                         <input value={this.state.date} type="date" onChange={this.updateDate}/>
@@ -97,7 +97,7 @@ class PersonalRecordIndex extends React.Component {
 
                 <div className="personal-records">
                     <div>
-                        {squatRecords.length === 1 ? <h3>{squatRecords.length} SQUAT PR</h3> : <h3>{squatRecords.length} SQUAT PRS</h3>}
+                        {squatRecords.length === 1 ? <h2>{squatRecords.length} SQUAT PR</h2> : <h2>{squatRecords.length} SQUAT PRS</h2>}
                         {
                             squatRecords.map(record => (
                                 <PersonalRecordIndexItem key={record.id} record={record} />
@@ -105,7 +105,7 @@ class PersonalRecordIndex extends React.Component {
                         }
                     </div>
                     <div>
-                        {benchRecords.length === 1 ? <h3>{benchRecords.length} BENCH PR</h3> : <h3>{benchRecords.length} BENCH PRS</h3>}
+                        {benchRecords.length === 1 ? <h2>{benchRecords.length} BENCH PR</h2> : <h2>{benchRecords.length} BENCH PRS</h2>}
                         {
                             benchRecords.map(record => (
                                 <PersonalRecordIndexItem key={record.id} record={record} />
@@ -113,7 +113,7 @@ class PersonalRecordIndex extends React.Component {
                         }
                     </div>
                     <div>
-                        {deadliftRecords.length === 1 ? <h3>{deadliftRecords.length} DEADLIFT PR</h3> : <h3>{deadliftRecords.length} DEADLIFT PRS</h3>}
+                        {deadliftRecords.length === 1 ? <h2>{deadliftRecords.length} DEADLIFT PR</h2> : <h2>{deadliftRecords.length} DEADLIFT PRS</h2>}
                         {
                             deadliftRecords.map(record => (
                                 <PersonalRecordIndexItem key={record.id} record={record} />
