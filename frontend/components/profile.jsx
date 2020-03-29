@@ -14,9 +14,7 @@ class Profile extends React.Component {
         return (
             <div>
                 <HeaderContainer history={this.props.history}/>
-                <Link to="/profile">Stats</Link>
-                <Link to="/profile/records">Personal Records</Link>
-                <Link to="/profile/weightlogs">Body Composition</Link>
+                
                 <Route exact path='/profile' component={StatsContainer}/>
                 <Route path='/profile/weightlogs' component={WeightLogContainer} />
                 <Route path='/profile/records' component={PersonalRecordContainer} />

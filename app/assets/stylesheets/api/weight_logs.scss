@@ -4,8 +4,72 @@
 
 .weight-log {
     display: flex;
+    justify-content: space-around;
+    font-size: 5vh;
+    // border: 1px solid red;
+    width: 100%;
+    &:hover {
+        color: black;
+        background-color: white;
+    }
 }
+
+.weight-logs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    // border: 1px solid orange;
+    height: 120vh;
+    overflow: auto;
+}
+
+.weight-log-index-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .changes-since-last-log {
     display: flex;
+    justify-content: flex-start;
+    // background-color: red;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.changes-since-last-log > h3 {
+    margin-right: 10%;
+}
+
+
+.changes {
+    display: flex;
+    // border: 1px solid green;
+    width: 70%;
+}
+
+.changes > div {
+    // border: 1px solid white;
+    width: 30%;
+    display: flex;
+}
+
+.changes > div p:first-child {
+    font-size: 3vh;
+    margin-right: 10%;
+}
+
+.changes > div p:last-child {
+    font-size: 5vh;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
 }

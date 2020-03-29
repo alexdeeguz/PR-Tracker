@@ -98,14 +98,28 @@ class WeightLogIndex extends React.Component {
         const changes = this.changes()
         const { weightLogs } = this.props
         return (
-            <div>
+            <div className="weight-log-index-container">
                 <h1>WEIGHT LOG INDEX</h1>
                 <div className="changes-since-last-log">
                     <h3>Changes since last log: </h3>
-                    <p>Weight: {changes.weightChange}</p>
-                    <p>Body Fat: {changes.bfChange}</p>
-                    <p>Lean Mass: {changes.lmChange}</p>
-                    <p>Fat Mass: {changes.fmChange}</p>
+                    <div className="changes">
+                        <div>
+                            <p>Weight:</p> 
+                            <p>{changes.weightChange}</p>
+                        </div>
+                        <div>
+                            <p>Body Fat:</p> 
+                            {changes.bfChange > 0 ? <p className="red">+{changes.bfChange}</p> : <p className="green">{changes.bfChange}</p>}
+                        </div>
+                        <div>
+                            <p>Lean Mass: </p> 
+                            {changes.lmChange > 0 ? <p className="green">+{changes.lmChange}</p> : <p className="red">{changes.lmChange}</p>}
+                        </div>
+                        <div>
+                            <p>Fat Mass: </p> 
+                            {changes.fmChange > 0 ? <p className="red">+{changes.fmChange}</p> : <p className="green">{changes.fmChange}</p>}
+                         </div>
+                    </div>
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <label>Date
@@ -120,13 +134,15 @@ class WeightLogIndex extends React.Component {
                     <button type="submit">LOG WEIGHT</button>
                 </form>
                 {
-                    <p>{this.props.errors.join(". ")}</p>
+                    <p className="errors">{this.props.errors.join(". ")}</p>
                 }
+                <div className="weight-logs">
                 {
                     weightLogs.map(log => (
                         <WeightLogIndexItem key={log.id} weightLog={log} />
                     ))
                 }
+                </div>
             </div>
         )
     }

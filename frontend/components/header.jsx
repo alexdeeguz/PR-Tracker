@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Header extends React.Component {
     constructor(props) {
@@ -14,8 +15,13 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.logout}>Log out</button>
+            <div className="header">
+                <div className="nav-links">
+                    <p><Link className="links" to="/profile">STATS</Link></p>
+                    <p><Link className="links" to="/profile/records">PERSONAL RECORDS</Link></p>
+                    <p><Link className="links" to="/profile/weightlogs">BODY COMPOSITION</Link></p>
+                </div>
+                <p onClick={this.logout}>Sign Out</p>
             </div>
         )
     }

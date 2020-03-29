@@ -16,14 +16,15 @@ class WeightLogIndexItem extends React.Component {
     // }
 
     render() {
-        const { date, weight, body_fat_percentage } = this.props.weightLog
+        const { date, weight, body_fat_percentage, lean_mass, fat_mass } = this.props.weightLog
+        console.log(this.props.weightLog)
         return (
             <div className="weight-log">
                 <p>{date}</p>
                 <p>WEIGHT: {weight}LBS</p>
                 <p>BODY FAT: {body_fat_percentage}%</p>
-                {/* <p>LEAN MASS: {this.lean_mass()}LBS</p>
-                <p>FAT MASS: {this.fat_mass()}LBS</p> */}
+                <p>LEAN MASS: {lean_mass}LBS</p>
+                <p>FAT MASS: {fat_mass}LBS</p>
             </div>
         )
     }

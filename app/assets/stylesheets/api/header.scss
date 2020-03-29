@@ -1,0 +1,38 @@
+.header > p {
+    color: white;
+    background-color: black;
+    // border: 1px solid red;
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+    padding: 15px;
+    margin: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid red;
+}
+
+.nav-links {
+    display: flex;
+    // border: 1px solid white;
+    width: 80%;
+}
+
+.links {
+    color: white;
+    letter-spacing: 3px;
+    // border: 1px solid orange;
+    padding: 15px;
+    width: 30%;
+    &:hover {
+        color: white;
+        background-color: #ff7000;
+    }
+    font-size: 20px;
+}
