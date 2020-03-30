@@ -102,7 +102,7 @@ class PersonalRecordIndex extends React.Component {
             <div className="personal-records-container">
                 <h1>YOU HAVE HIT {personalRecords.length} PERSONAL RECORDS!</h1>
                 <form className="log-pr-form">
-                    <h3>Log a PR: </h3>
+                    <h3>New PR: </h3>
                     <label>
                         <input value={this.state.date} type="date" onChange={this.updateDate}/>
                     </label>

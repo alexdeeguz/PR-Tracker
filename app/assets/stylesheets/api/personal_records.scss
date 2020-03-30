@@ -34,13 +34,18 @@
 
 .log-pr-form > label > input, .log-pr-form > select {
     height: 5vh;
+    width: 13vw;
     font-size: 3vh;
 }
 
 .log-pr-form {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    // border: 1px solid red;
 }
 
 .log-pr-form > button {
@@ -81,7 +86,14 @@
 .personal-records > div {
     // border: 1px solid white;
     width: 33%;
+}
+
+.personal-records > div:first-child {
     border-right: 1px solid white;
+}
+
+.personal-records > div:last-child {
+    border-left: 1px solid white;
 }
 
 .personal-record {
