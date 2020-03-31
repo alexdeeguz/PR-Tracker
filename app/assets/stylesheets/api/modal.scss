@@ -57,9 +57,6 @@
     text-align: center;
 }
 
-.session-form > h1 {
-    margin-top: 3%;
-}
 
 .session-form > form > input, .session-form > form > button, #button {
     width: 50%;
@@ -84,6 +81,7 @@ button, .modal-content > p > p {
 #button:hover {
     color: black;
     background-color: white;
+    cursor: pointer;
 }
 
 .errors {
@@ -169,6 +167,36 @@ content: "";
     width: 50%;
     padding: 10px;
     text-align: center;
+}
+
+#button {
+    margin-bottom: 0;
+}
+
+.session-form-general > form > p {
+    margin: 0;
+    margin-top: 3%;
+    cursor: pointer;
+    &:hover {
+        color: gray;
+    }
+}
+
+.modal-content > div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content > div:last-child > p {
+    margin-right: 1%;
+    margin-top: 0;
+}
+
+.modal-content > div:last-child > p:last-child:hover {
+    cursor: pointer;
+        &:hover {
+        color: gray;
+    }
 }
 
 

@@ -8,6 +8,9 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  session_token   :string
+#  name            :string
+#  dob             :date
+#  height          :integer
 #
 class User < ApplicationRecord
     validates :username, :session_token, presence: true, uniqueness: true

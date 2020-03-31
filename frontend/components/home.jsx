@@ -80,7 +80,15 @@ class Home extends React.Component {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <span onClick={this.closeModal} className="close">&times;</span>
                         {this.state.formType === 'login' ? <LoginContainer history={this.props.history} /> : <SignUpContainer history={this.props.history}/>}
-                        {this.state.formType === 'login' ? <p>Don't have an account? <p onClick={() => this.setState({formType: 'signup'})}>Sign up</p></p> : <p>Already have an account? <p onClick={() => this.setState({formType: 'login'})}>Log in</p></p>}
+                        {this.state.formType === 'login' ? 
+                        <div>
+                            <p>Don't have an account? </p>
+                            <p onClick={() => this.setState({formType: 'signup'})}>Sign up</p>
+                        </div> : 
+                        <div>
+                            <p>Already have an account?</p>
+                            <p onClick={() => this.setState({formType: 'login'})}>Log in</p>
+                        </div>}
                     </div>
                 </div>
             </div>

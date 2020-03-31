@@ -901,13 +901,13 @@ var Home = /*#__PURE__*/function (_React$Component) {
         history: this.props.history
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_signup_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         history: this.props.history
-      }), this.state.formType === 'login' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), this.state.formType === 'login' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account? "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         onClick: function onClick() {
           return _this3.setState({
             formType: 'signup'
           });
         }
-      }, "Sign up")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Sign up")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         onClick: function onClick() {
           return _this3.setState({
             formType: 'login'
@@ -1446,10 +1446,20 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.updateUsername = _this.updateUsername.bind(_assertThisInitialized(_this));
     _this.updatePassword = _this.updatePassword.bind(_assertThisInitialized(_this));
     _this.updateName = _this.updateName.bind(_assertThisInitialized(_this));
+    _this.updateHeight = _this.updateHeight.bind(_assertThisInitialized(_this));
+    _this.updateDOB = _this.updateDOB.bind(_assertThisInitialized(_this));
+    _this.updateWeight = _this.updateWeight.bind(_assertThisInitialized(_this));
+    _this.updateBF = _this.updateBF.bind(_assertThisInitialized(_this));
     _this.nextForm = _this.nextForm.bind(_assertThisInitialized(_this));
+    _this.previousForm = _this.previousForm.bind(_assertThisInitialized(_this));
     _this.state = {
       username: "",
       password: "",
+      name: "",
+      height: "",
+      weight: "",
+      body_fat: "",
+      dob: "",
       formFilled: false
     };
     return _this;
@@ -1482,10 +1492,45 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "updateHeight",
+    value: function updateHeight(e) {
+      this.setState({
+        height: e.target.value
+      });
+    }
+  }, {
+    key: "updateWeight",
+    value: function updateWeight(e) {
+      this.setState({
+        weight: e.target.value
+      });
+    }
+  }, {
+    key: "updateDOB",
+    value: function updateDOB(e) {
+      this.setState({
+        dob: e.target.value
+      });
+    }
+  }, {
+    key: "updateBF",
+    value: function updateBF(e) {
+      this.setState({
+        body_fat: e.target.value
+      });
+    }
+  }, {
     key: "nextForm",
     value: function nextForm() {
       this.setState({
         formFilled: true
+      });
+    }
+  }, {
+    key: "previousForm",
+    value: function previousForm() {
+      this.setState({
+        formFilled: false
       });
     }
   }, {
@@ -1496,14 +1541,18 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = {
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        name: this.state.name,
+        dob: this.state.dob,
+        height: this.state.height,
+        body_fat_percentage: this.state.body_fat
       };
 
       if (this.props.formType === 'login') {
         this.props.login(user).then(function () {
           return _this2.props.history.push('/profile');
         });
-      } else if (this.state.formFilled === true) {
+      } else if (this.state.formFilled === true && this.props.formType === "sign up") {
         this.props.signup(user).then(function () {
           return _this2.props.history.push('/profile');
         });
@@ -1515,9 +1564,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          onSubmit: this.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           onChange: this.updateUsername,
           value: this.state.username,
@@ -1532,16 +1579,14 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           onClick: this.nextForm
         }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
-          type: "submit"
+          onClick: this.handleSubmit
         }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "errors"
         }, this.props.errors.join(". ")));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form-general"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GENERAL INFORMATION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          onSubmit: this.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GENERAL INFORMATION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           id: "input",
           type: "text",
           onChange: this.updateName,
@@ -1550,26 +1595,33 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           id: "input",
           type: "date",
-          placeholder: "DOB: "
+          placeholder: "DOB: ",
+          onChange: this.updateDOB
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "height-weight"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.updateHeight,
           type: "number",
           placeholder: "Height(in) ",
           step: "1"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.updateWeight,
           type: "number",
           placeholder: "Weight(lbs) ",
           step: "0.1"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.updateBF,
           id: "input",
           type: "number",
           placeholder: "Body Fat % ",
           step: "0.1"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
-          type: "submit"
-        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          type: "submit",
+          onClick: this.handleSubmit
+        }, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.previousForm
+        }, "back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "errors"
         }, this.props.errors.join(". ")));
       }
