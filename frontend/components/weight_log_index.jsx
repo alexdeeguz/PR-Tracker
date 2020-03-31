@@ -94,7 +94,6 @@ class WeightLogIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const changes = this.changes()
         const { weightLogs } = this.props
         return (

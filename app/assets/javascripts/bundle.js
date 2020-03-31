@@ -544,6 +544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _stats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../stats */ "./frontend/components/stats.jsx");
 /* harmony import */ var _actions_personal_record_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/personal_record_actions */ "./frontend/actions/personal_record_actions.js");
+/* harmony import */ var _actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/weight_log_actions */ "./frontend/actions/weight_log_actions.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -555,6 +556,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -577,17 +579,29 @@ var mSTP = function mSTP(state) {
       return record.exercise === "deadlift";
     }).map(function (record) {
       return record.weight;
-    })))
+    }))),
+    weightLogs: Object.values(state.entities.weightLogs).sort(function (a, b) {
+      return sortDate(a.date, b.date);
+    })
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
+    getWeightLogs: function getWeightLogs(id) {
+      return dispatch(Object(_actions_weight_log_actions__WEBPACK_IMPORTED_MODULE_3__["getAllWeightLogs"])(id));
+    },
     getAllPersonalRecords: function getAllPersonalRecords(id) {
       return dispatch(Object(_actions_personal_record_actions__WEBPACK_IMPORTED_MODULE_2__["getAllPersonalRecords"])(id));
     }
   };
 };
+
+function sortDate(dateOne, dateTwo) {
+  var dateA = new Date(dateOne),
+      dateB = new Date(dateTwo);
+  return dateA - dateB;
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_stats__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
@@ -710,6 +724,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -850,7 +865,9 @@ var Home = /*#__PURE__*/function (_React$Component) {
         onClick: this.openModal
       }, "LOGIN OR SIGNUP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Learn More"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u2193\u2193\u2193")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "app-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "features"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Strength Tracker"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Keep track of both your absolute strength and relative strength by logging your 1 rep max and rep max personal records")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-info"
@@ -1545,10 +1562,21 @@ var Stats = /*#__PURE__*/function (_React$Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.getAllPersonalRecords(this.props.currentUser.id);
+      this.props.getWeightLogs(this.props.currentUser.id);
     }
   }, {
     key: "render",
     value: function render() {
+      var weight, bf, lm, fm;
+      var currentWeightLog = this.props.weightLogs[this.props.weightLogs.length - 1];
+
+      if (currentWeightLog) {
+        weight = currentWeightLog.weight.toFixed(1);
+        bf = currentWeightLog.body_fat_percentage.toFixed(1);
+        lm = currentWeightLog.lean_mass.toFixed(1);
+        fm = currentWeightLog.fat_mass.toFixed(1);
+      }
+
       var total = 0;
       var _this$props = this.props,
           maxSquat = _this$props.maxSquat,
@@ -1557,7 +1585,19 @@ var Stats = /*#__PURE__*/function (_React$Component) {
       maxSquat >= 0 ? total += maxSquat : null;
       maxBench >= 0 ? total += maxBench : null;
       maxDeadlift >= 0 ? total += maxDeadlift : null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, maxSquat <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "SQUAT: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "SQUAT: ", maxSquat), maxBench <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "BENCH: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "BENCH: ", maxBench), maxDeadlift <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DEADLIFT: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DEADLIFT: ", maxDeadlift), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "TOTAL: ", total)));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.currentUser.username.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Age: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Height:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Weight: ", weight, " lbs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "BODY COMPOSITION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Body Fat: ", bf, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Lean Mass: ", lm, " lbs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Fat Mass: ", fm, " lbs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "STRENGTH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "strength"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, maxSquat <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Squat: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Squat: ", maxSquat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Relative:"), maxSquat <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, (maxSquat / weight).toFixed(2))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, maxBench <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Bench: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Bench: ", maxBench), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Relative:"), maxBench <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, (maxBench / weight).toFixed(2))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, maxDeadlift <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Deadlift: N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Deadlift: ", maxDeadlift), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Relative:"), maxDeadlift <= 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "N/A") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, (maxDeadlift / weight).toFixed(2)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "total"
+      }, "STRENGTH TOTAL: ", total)));
     }
   }]);
 
@@ -1723,7 +1763,6 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
       var changes = this.changes();
       var weightLogs = this.props.weightLogs;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1825,15 +1864,7 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, WeightLogIndexItem);
 
     return _super.call(this, props);
-  } // lean_mass() {
-  //     this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass()
-  //     return this.props.weightLog.lean_mass
-  // }
-  // fat_mass() {
-  //     this.props.weightLog.fat_mass = Number(((this.props.weightLog.body_fat_percentage / 100) * this.props.weightLog.weight).toFixed(1))
-  //     return this.props.weightLog.fat_mass
-  // }
-
+  }
 
   _createClass(WeightLogIndexItem, [{
     key: "render",
@@ -1847,7 +1878,7 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
       console.log(this.props.weightLog);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LEAN MASS: ", lean_mass, "LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FAT MASS: ", fat_mass, "LBS"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight.toFixed(1), " LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage.toFixed(1), "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LEAN MASS: ", lean_mass.toFixed(1), " LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FAT MASS: ", fat_mass.toFixed(1), " LBS"));
     }
   }]);
 

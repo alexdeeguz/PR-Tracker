@@ -50,7 +50,7 @@ class Home extends React.Component {
                     <p>↓↓↓</p>
                 </div>
                 <div className="app-info">
-                    <div>
+                    <div className="features">
                         <div className="feature-info">
                             <h1>Strength Tracker</h1>
                             <p>Keep track of both your absolute strength and relative strength by logging your 1 rep max and rep max personal records</p>

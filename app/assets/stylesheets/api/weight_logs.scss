@@ -92,12 +92,14 @@
 
 .log-weight-form > label > input {
     height: 5vh;
+    width: 14vw;
     font-size: 3vh;
 }
 
 .log-weight-form {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     // background-color: #ff7000;
     // border: 1px solid #ff7000;
     padding: 10px;

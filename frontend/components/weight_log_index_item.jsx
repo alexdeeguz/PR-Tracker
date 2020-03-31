@@ -5,26 +5,16 @@ class WeightLogIndexItem extends React.Component {
         super(props)
     }
 
-    // lean_mass() {
-    //     this.props.weightLog.lean_mass = this.props.weightLog.weight - this.fat_mass()
-    //     return this.props.weightLog.lean_mass
-    // }
-
-    // fat_mass() {
-    //     this.props.weightLog.fat_mass = Number(((this.props.weightLog.body_fat_percentage / 100) * this.props.weightLog.weight).toFixed(1))
-    //     return this.props.weightLog.fat_mass
-    // }
-
     render() {
         const { date, weight, body_fat_percentage, lean_mass, fat_mass } = this.props.weightLog
         console.log(this.props.weightLog)
         return (
             <div className="weight-log">
                 <p>{date}</p>
-                <p>WEIGHT: {weight}LBS</p>
-                <p>BODY FAT: {body_fat_percentage}%</p>
-                <p>LEAN MASS: {lean_mass}LBS</p>
-                <p>FAT MASS: {fat_mass}LBS</p>
+                <p>WEIGHT: {weight.toFixed(1)} LBS</p>
+                <p>BODY FAT: {body_fat_percentage.toFixed(1)}%</p>
+                <p>LEAN MASS: {lean_mass.toFixed(1)} LBS</p>
+                <p>FAT MASS: {fat_mass.toFixed(1)} LBS</p>
             </div>
         )
     }
