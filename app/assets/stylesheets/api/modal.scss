@@ -61,7 +61,7 @@
     margin-top: 3%;
 }
 
-.session-form > form > input, .session-form > form > button {
+.session-form > form > input, .session-form > form > button, #button {
     width: 50%;
     height: 6vh;
     margin-bottom: 5%;
@@ -90,6 +90,86 @@ button, .modal-content > p > p {
     color: red;
 }
 
+input[type='date']:before {
+    content: attr(placeholder) !important;
+    color: white;
+    margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+content: "";
+}
+
+input[type='number']:before {
+    content: attr(placeholder) !important;
+    color: white;
+    margin-right: 0.5em;
+}
+
+input[type="number"]:focus:before,
+input[type="number"]:valid:before {
+content: "";
+}
+
+.session-form-general {
+    color: black;
+    text-align: center;
+}
+
+.session-form-general > h1 {
+    margin-top: 3%;
+}
+
+.session-form-general > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input {
+    width: 50%;
+    height: 4vh;
+    margin-bottom: 1%;
+    font-size: 3vh;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: 1px solid black;
+}
+
+.height-weight {
+    display: flex;
+    // border: 2px solid red;
+    justify-content: center;
+    width: 50%;
+    height: 6vh;
+    margin-bottom: 1%;
+    font-size: 3vh;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: 1px solid black;
+}
+
+.height-weight > input:first-child {
+    // margin-right: 1%;
+    border-right: 1px solid white;
+}
+
+.height-weight > input {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    outline: none;
+    font-size: 3vh;
+    padding: 10px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
 
 
 

@@ -879,12 +879,12 @@ var Home = /*#__PURE__*/function (_React$Component) {
         className: "feature-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.icon3URL
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Training Logs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Log training data to see how you progress throughout time")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Training Logs (coming soon)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Log training data to see how you progress throughout time")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.icon4URL,
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Fitness Assessments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The application will take all the logged data to calculate your fitness levels for muscular strength, muscular endurance, and cardiovascular fitness")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Fitness Assessments (coming soon)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The application will take all the logged data to calculate your fitness levels for muscular strength, muscular endurance, and cardiovascular fitness")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-container hidden",
         onClick: this.closeModal
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1445,9 +1445,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateUsername = _this.updateUsername.bind(_assertThisInitialized(_this));
     _this.updatePassword = _this.updatePassword.bind(_assertThisInitialized(_this));
+    _this.updateName = _this.updateName.bind(_assertThisInitialized(_this));
+    _this.nextForm = _this.nextForm.bind(_assertThisInitialized(_this));
     _this.state = {
       username: "",
-      password: ""
+      password: "",
+      formFilled: false
     };
     return _this;
   }
@@ -1472,18 +1475,36 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "updateName",
+    value: function updateName(e) {
+      this.setState({
+        name: e.target.value
+      });
+    }
+  }, {
+    key: "nextForm",
+    value: function nextForm() {
+      this.setState({
+        formFilled: true
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
 
       e.preventDefault();
+      var user = {
+        username: this.state.username,
+        password: this.state.password
+      };
 
       if (this.props.formType === 'login') {
-        this.props.login(this.state).then(function () {
+        this.props.login(user).then(function () {
           return _this2.props.history.push('/profile');
         });
-      } else {
-        this.props.signup(this.state).then(function () {
+      } else if (this.state.formFilled === true) {
+        this.props.signup(user).then(function () {
           return _this2.props.history.push('/profile');
         });
       }
@@ -1491,26 +1512,67 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.updateUsername,
-        value: this.state.username,
-        placeholder: "Username"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        onChange: this.updatePassword,
-        value: this.state.password,
-        placeholder: "Password"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "button",
-        type: "submit"
-      }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errors"
-      }, this.props.errors.join(". ")));
+      if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "session-form"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          onChange: this.updateUsername,
+          value: this.state.username,
+          placeholder: "Username"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "password",
+          onChange: this.updatePassword,
+          value: this.state.password,
+          placeholder: "Password"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.formType === 'sign up' && !this.state.formFilled ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "button",
+          onClick: this.nextForm
+        }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "button",
+          type: "submit"
+        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, this.props.errors.join(". ")));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "session-form-general"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GENERAL INFORMATION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          id: "input",
+          type: "text",
+          onChange: this.updateName,
+          value: this.state.name,
+          placeholder: "Name"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          id: "input",
+          type: "date",
+          placeholder: "DOB: "
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "height-weight"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "number",
+          placeholder: "Height(in) ",
+          step: "1"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "number",
+          placeholder: "Weight(lbs) ",
+          step: "0.1"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          id: "input",
+          type: "number",
+          placeholder: "Body Fat % ",
+          step: "0.1"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "button",
+          type: "submit"
+        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, this.props.errors.join(". ")));
+      }
     }
   }]);
 

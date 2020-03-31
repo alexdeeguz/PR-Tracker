@@ -63,12 +63,12 @@ class Home extends React.Component {
                         </div>
                         <div className="feature-info">
                             <img src={window.icon3URL} />
-                            <h1>Training Logs</h1>
+                            <h1>Training Logs (coming soon)</h1>
                             <p>Log training data to see how you progress throughout time</p>
                         </div>
                         <div className="feature-info">
                             <img src={window.icon4URL} alt="" />
-                            <h1>Fitness Assessments</h1>
+                            <h1>Fitness Assessments (coming soon)</h1>
                             <p>The application will take all the logged data to calculate your fitness levels for muscular strength, muscular endurance, and cardiovascular fitness</p>
                         </div>
                     </div>
