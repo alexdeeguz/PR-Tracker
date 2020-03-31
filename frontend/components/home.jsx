@@ -52,18 +52,22 @@ class Home extends React.Component {
                 <div className="app-info">
                     <div className="features">
                         <div className="feature-info">
+                            <img src={window.icon1URL}/>
                             <h1>Strength Tracker</h1>
                             <p>Keep track of both your absolute strength and relative strength by logging your 1 rep max and rep max personal records</p>
                         </div>
                         <div className="feature-info">
+                            <img src={window.icon2URL}/>
                             <h1>Body Composition Tracker</h1>
                             <p>Keep track of your body composition. The body composition log will tell you how much lean mass, fat mass, and total bodyweight you gain and lose since the last log</p>
                         </div>
                         <div className="feature-info">
+                            <img src={window.icon3URL} />
                             <h1>Training Logs</h1>
                             <p>Log training data to see how you progress throughout time</p>
                         </div>
                         <div className="feature-info">
+                            <img src={window.icon4URL} alt="" />
                             <h1>Fitness Assessments</h1>
                             <p>The application will take all the logged data to calculate your fitness levels for muscular strength, muscular endurance, and cardiovascular fitness</p>
                         </div>

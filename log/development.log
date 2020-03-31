@@ -51874,3 +51874,556 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.7ms)
 
 
+Started GET "/" for ::1 at 2020-03-30 17:14:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 805ms (Views: 805.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 237ms (Views: 236.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:13 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 44ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 215ms (Views: 214.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 45ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 190ms (Views: 190.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 41ms (Views: 40.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:15:48 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 45ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 591ms (Views: 590.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:17 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 62ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 69ms (Views: 68.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 55ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:31 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 191ms (Views: 190.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:32 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 45ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:16:48 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 173ms (Views: 173.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:17:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 183ms (Views: 182.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:18:01 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 955ms (Views: 954.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:18:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 40ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:18:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 99ms (Views: 98.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:18:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 53ms (Views: 52.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:18:52 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 145ms (Views: 144.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:19:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 168ms (Views: 168.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:19:17 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 145ms (Views: 145.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:19:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 47ms (Views: 46.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 387ms (Views: 387.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 38ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 530ms (Views: 530.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:53 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 233ms (Views: 233.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:20:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 36ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:21:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 53ms (Views: 52.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:21:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 56ms (Views: 55.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:21:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 214ms (Views: 213.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:21:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 113ms (Views: 113.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:22:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 157ms (Views: 156.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:22:14 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 264ms (Views: 263.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:22:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 71ms (Views: 65.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:22:24 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 56ms (Views: 55.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 191ms (Views: 190.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:18 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 295ms (Views: 294.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:20 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 40ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 42ms (Views: 41.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 178ms (Views: 177.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 410ms (Views: 410.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 40ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:52 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 179ms (Views: 178.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:23:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 48ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:24:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 47ms (Views: 46.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:24:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 43ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:24:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 48ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:24:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 126ms (Views: 125.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:25:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 188ms (Views: 188.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 202ms (Views: 201.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 41ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 34ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:36 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 322ms (Views: 321.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 122ms (Views: 121.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:26:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 45ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:27:03 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 174ms (Views: 174.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-30 17:27:03 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 87ms (Views: 86.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2020-03-31 09:59:33 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (42.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4UuKXAsSLDunVuwQ2qyLxQ"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:7
+Completed 422 Unprocessable Entity in 492ms (Views: 1.1ms | ActiveRecord: 43.9ms)
+
+
+Started POST "/api/users" for ::1 at 2020-03-31 09:59:34 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "BIvsdifUo3GCnoITQnDQXg"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:7
+Completed 422 Unprocessable Entity in 287ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:08:26 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4509ms (Views: 4508.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:05 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 1241ms (Views: 1240.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:08 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 304ms (Views: 303.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 70ms (Views: 69.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 45ms (Views: 44.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 39ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:11 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 38ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:17 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 34ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:18 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 56ms (Views: 56.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:09:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 561ms (Views: 561.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:10:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 840ms (Views: 839.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:11:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 137ms (Views: 137.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:11:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 196ms (Views: 196.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-31 10:11:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 141ms (Views: 140.4ms | ActiveRecord: 0.0ms)
+
+

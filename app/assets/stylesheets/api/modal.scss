@@ -43,19 +43,22 @@
 }
 
 .close {
-    float: right;
     font-size: 5vh;
     cursor: pointer;
     color: black;
     &:hover {
         color: gray;
     }
+    float: right;
 }
 
 .session-form {
-    // border: 1px solid red;
     color: black;
     text-align: center;
+}
+
+.session-form > h1 {
+    margin-top: 3%;
 }
 
 .session-form > form > input, .session-form > form > button {
