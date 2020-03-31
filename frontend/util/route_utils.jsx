@@ -17,4 +17,14 @@ const Auth = ({ loggedIn, path, component: Component }) => (
     />
 )
 
+const Protected = ({ loggedIn, path, component: Component }) => (
+    <Route
+        path={path}
+        render={props => (
+            !loggedIn ? <Redirect to="/" /> : <Component {...props} />
+        )}
+    />
+)
+
 export const AuthRoute = withRouter(connect(mSTP)(Auth))
+export const ProtectedRoute = withRouter(connect(mSTP)(Protected))
