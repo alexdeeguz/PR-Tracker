@@ -724,7 +724,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1575,7 +1574,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
@@ -1703,23 +1701,6 @@ var Stats = /*#__PURE__*/function (_React$Component) {
       this.props.getWeightLogs(this.props.currentUser.id);
     }
   }, {
-    key: "height",
-    value: function height() {
-      var feet = Math.floor(this.props.currentUser.height / 12);
-      var inches = this.props.currentUser.height % 12;
-      return "".concat(feet, "'").concat(inches, "\"");
-    }
-  }, {
-    key: "age",
-    value: function age() {
-      var today = new Date();
-      var dob = new Date(this.props.currentUser.dob);
-      var diff_in_time = today.getTime() - dob.getTime();
-      var diff_in_days = diff_in_time / (1000 * 3600 * 24);
-      var years = diff_in_days / 365;
-      return Math.floor(years);
-    }
-  }, {
     key: "render",
     value: function render() {
       var weight, bf, lm, fm;
@@ -1737,14 +1718,15 @@ var Stats = /*#__PURE__*/function (_React$Component) {
           maxSquat = _this$props.maxSquat,
           maxBench = _this$props.maxBench,
           maxDeadlift = _this$props.maxDeadlift;
+      var name = this.props.currentUser.name ? this.props.currentUser.name.toUpperCase() : "";
       maxSquat >= 0 ? total += maxSquat : null;
       maxBench >= 0 ? total += maxBench : null;
       maxDeadlift >= 0 ? total += maxDeadlift : null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "stats-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.currentUser.name.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STATS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "stats"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Age: ", this.age()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Height: ", this.height()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Weight: ", weight, " lbs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "BODY COMPOSITION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Age: ", this.props.currentUser.age), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Height: ", this.props.currentUser.converted_height), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Weight: ", weight, " lbs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "BODY COMPOSITION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "stats"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Body Fat: ", bf, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Lean Mass: ", lm, " lbs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Fat Mass: ", fm, " lbs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "STRENGTH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "strength"
@@ -2030,7 +2012,6 @@ var WeightLogIndexItem = /*#__PURE__*/function (_React$Component) {
           body_fat_percentage = _this$props$weightLog.body_fat_percentage,
           lean_mass = _this$props$weightLog.lean_mass,
           fat_mass = _this$props$weightLog.fat_mass;
-      console.log(this.props.weightLog);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "WEIGHT: ", weight.toFixed(1), " LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BODY FAT: ", body_fat_percentage.toFixed(1), "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LEAN MASS: ", lean_mass.toFixed(1), " LBS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FAT MASS: ", fat_mass.toFixed(1), " LBS"));
@@ -2360,7 +2341,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);

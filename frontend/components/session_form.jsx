@@ -117,7 +117,6 @@ class SessionForm extends React.Component {
     
 
     render() {
-        // debugger
         if (this.props.formType === 'login' || (this.props.formType === 'sign up' && !this.state.formFilled)) {
             return (
                 <div className="session-form">

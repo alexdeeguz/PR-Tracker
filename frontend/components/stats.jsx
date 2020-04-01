@@ -3,6 +3,7 @@ import React from 'react'
 class Stats extends React.Component {
     constructor(props) {
         super(props)
+
     }
 
 
@@ -11,20 +12,6 @@ class Stats extends React.Component {
         this.props.getWeightLogs(this.props.currentUser.id)
     }
 
-    height() {
-        const feet = Math.floor(this.props.currentUser.height / 12)
-        const inches = this.props.currentUser.height % 12
-        return `${feet}'${inches}"`
-    }
-
-    age() {
-        const today = new Date()
-        const dob = new Date(this.props.currentUser.dob)
-        const diff_in_time = today.getTime() - dob.getTime()
-        const diff_in_days = diff_in_time / (1000 * 3600 * 24)
-        const years = diff_in_days / 365
-        return Math.floor(years)
-    }
 
     render() {
         let weight, bf, lm, fm;
@@ -37,16 +24,17 @@ class Stats extends React.Component {
         }
         let total = 0
         const { maxSquat, maxBench, maxDeadlift } = this.props
+        const name = this.props.currentUser.name ? this.props.currentUser.name.toUpperCase() : ""
         maxSquat >= 0 ? total += maxSquat : null
         maxBench >= 0 ? total += maxBench : null
         maxDeadlift >= 0 ? total += maxDeadlift : null 
         return (
             <div className="stats-container">
                 <h1>STATS</h1>
-                    <h2>{this.props.currentUser.name.toUpperCase()}</h2>
+                    <h2>{name}</h2>
                 <div className="stats">
-                    <h3>Age: {this.age()}</h3>
-                    <h3>Height: {this.height()}</h3>
+                    <h3>Age: {this.props.currentUser.age}</h3>
+                    <h3>Height: {this.props.currentUser.converted_height}</h3>
                     <h3>Weight: {weight} lbs</h3>
                 </div>
                 <h2>BODY COMPOSITION</h2>

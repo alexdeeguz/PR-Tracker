@@ -7,7 +7,6 @@ class WeightLogIndexItem extends React.Component {
 
     render() {
         const { date, weight, body_fat_percentage, lean_mass, fat_mass } = this.props.weightLog
-        console.log(this.props.weightLog)
         return (
             <div className="weight-log">
                 <p>{date}</p>
