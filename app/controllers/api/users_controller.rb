@@ -7,6 +7,10 @@ class Api::UsersController < ApplicationController
         bf = params[:user][:body_fat_percentage].to_f
         fm = ((bf/100) * weight).round(1)
         lm = (weight - fm).round(1)
+        if params[:user][:dob] === "" || params[:user][:height] === ""
+            render json: ["Please fill out information"], status: 422
+            return
+        end
         age = age(params[:user][:dob])
         height = height(params[:user][:height])
         new_params = {
