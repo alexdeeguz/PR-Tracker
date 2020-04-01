@@ -11,6 +11,21 @@ class Stats extends React.Component {
         this.props.getWeightLogs(this.props.currentUser.id)
     }
 
+    height() {
+        const feet = Math.floor(this.props.currentUser.height / 12)
+        const inches = this.props.currentUser.height % 12
+        return `${feet}'${inches}"`
+    }
+
+    age() {
+        const today = new Date()
+        const dob = new Date(this.props.currentUser.dob)
+        const diff_in_time = today.getTime() - dob.getTime()
+        const diff_in_days = diff_in_time / (1000 * 3600 * 24)
+        const years = diff_in_days / 365
+        return Math.floor(years)
+    }
+
     render() {
         let weight, bf, lm, fm;
         const currentWeightLog = this.props.weightLogs[this.props.weightLogs.length - 1]
@@ -28,10 +43,10 @@ class Stats extends React.Component {
         return (
             <div className="stats-container">
                 <h1>STATS</h1>
-                    <h2>{this.props.currentUser.username.toUpperCase()}</h2>
+                    <h2>{this.props.currentUser.name.toUpperCase()}</h2>
                 <div className="stats">
-                    <h3>Age: </h3>
-                    <h3>Height:</h3>
+                    <h3>Age: {this.age()}</h3>
+                    <h3>Height: {this.height()}</h3>
                     <h3>Weight: {weight} lbs</h3>
                 </div>
                 <h2>BODY COMPOSITION</h2>
