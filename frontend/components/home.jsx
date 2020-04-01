@@ -14,6 +14,8 @@ class Home extends React.Component {
         }
     }
 
+
+
     logout(e) {
         e.preventDefault()
         this.props.logout()

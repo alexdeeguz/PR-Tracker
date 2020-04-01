@@ -72,16 +72,29 @@ class SessionForm extends React.Component {
         })
     }
 
-    nextForm() {
+    nextForm(e) {
+        e.preventDefault()
         this.setState({
             formFilled: true
         })
+    }
+
+    openModal() {
+        const modal = $(".modal-container")
+        modal.removeClass('hidden')
+        modal.addClass('show')
     }
 
     previousForm() {
         this.setState({
             formFilled: false
         })
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(prevProps)
+        console.log(this.props)
+        this.openModal()
     }
 
     handleSubmit(e) {
@@ -105,6 +118,7 @@ class SessionForm extends React.Component {
     
 
     render() {
+        // debugger
         if (this.props.formType === 'login' || (this.props.formType === 'sign up' && !this.state.formFilled)) {
             return (
                 <div className="session-form">

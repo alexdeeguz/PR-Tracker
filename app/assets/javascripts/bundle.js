@@ -1521,10 +1521,18 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "nextForm",
-    value: function nextForm() {
+    value: function nextForm(e) {
+      e.preventDefault();
       this.setState({
         formFilled: true
       });
+    }
+  }, {
+    key: "openModal",
+    value: function openModal() {
+      var modal = $(".modal-container");
+      modal.removeClass('hidden');
+      modal.addClass('show');
     }
   }, {
     key: "previousForm",
@@ -1532,6 +1540,13 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.setState({
         formFilled: false
       });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      console.log(prevProps);
+      console.log(this.props);
+      this.openModal();
     }
   }, {
     key: "handleSubmit",
@@ -1561,6 +1576,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // debugger
       if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
