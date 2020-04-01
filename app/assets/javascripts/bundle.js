@@ -1544,8 +1544,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      console.log(prevProps);
-      console.log(this.props);
       this.openModal();
     }
   }, {
@@ -1560,7 +1558,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         name: this.state.name,
         dob: this.state.dob,
         height: this.state.height,
-        body_fat_percentage: this.state.body_fat
+        body_fat_percentage: this.state.body_fat,
+        weight: this.state.weight
       };
 
       if (this.props.formType === 'login') {
@@ -1710,10 +1709,10 @@ var Stats = /*#__PURE__*/function (_React$Component) {
       var currentWeightLog = this.props.weightLogs[this.props.weightLogs.length - 1];
 
       if (currentWeightLog) {
-        weight = currentWeightLog.weight.toFixed(1);
-        bf = currentWeightLog.body_fat_percentage.toFixed(1);
-        lm = currentWeightLog.lean_mass.toFixed(1);
-        fm = currentWeightLog.fat_mass.toFixed(1);
+        weight = currentWeightLog.weight;
+        bf = currentWeightLog.body_fat_percentage;
+        lm = currentWeightLog.lean_mass;
+        fm = currentWeightLog.fat_mass;
       }
 
       var total = 0;

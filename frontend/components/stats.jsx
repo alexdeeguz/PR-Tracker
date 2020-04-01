@@ -15,10 +15,10 @@ class Stats extends React.Component {
         let weight, bf, lm, fm;
         const currentWeightLog = this.props.weightLogs[this.props.weightLogs.length - 1]
         if (currentWeightLog) {
-            weight = currentWeightLog.weight.toFixed(1)
-            bf = currentWeightLog.body_fat_percentage.toFixed(1)
-            lm = currentWeightLog.lean_mass.toFixed(1)
-            fm = currentWeightLog.fat_mass.toFixed(1)
+            weight = currentWeightLog.weight
+            bf = currentWeightLog.body_fat_percentage
+            lm = currentWeightLog.lean_mass
+            fm = currentWeightLog.fat_mass
         }
         let total = 0
         const { maxSquat, maxBench, maxDeadlift } = this.props

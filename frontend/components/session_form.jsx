@@ -92,8 +92,6 @@ class SessionForm extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps)
-        console.log(this.props)
         this.openModal()
     }
 
@@ -105,7 +103,8 @@ class SessionForm extends React.Component {
             name: this.state.name,
             dob: this.state.dob,
             height: this.state.height,
-            body_fat_percentage: this.state.body_fat
+            body_fat_percentage: this.state.body_fat,
+            weight: this.state.weight
         }
         if (this.props.formType === 'login') {
             this.props.login(user)
