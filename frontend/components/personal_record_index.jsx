@@ -120,7 +120,7 @@ class PersonalRecordIndex extends React.Component {
                     </label>
                     <button onClick={this.handleSubmit}>LOG PR</button>
                 </form>
-                <p className="errors">{this.props.errors.join(". ")}</p>
+                <p className="errors">{this.props.errors}</p>
                 
                 <div className="pr-filters"> 
                     <li id={this.state.selected === 'ALL' ? 'selected' : "non-selected"} onClick={(e) => this.setState({filter: 'all', selected: e.target.innerHTML})}>ALL</li>

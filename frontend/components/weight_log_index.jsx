@@ -133,7 +133,7 @@ class WeightLogIndex extends React.Component {
                     <button type="submit">LOG WEIGHT</button>
                 </form>
                 {
-                    <p className="errors">{this.props.errors.join(". ")}</p>
+                    <p className="errors">{this.props.errors}</p>
                 }
                 <div className="weight-logs">
                 {

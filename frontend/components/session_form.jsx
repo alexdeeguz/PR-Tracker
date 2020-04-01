@@ -128,7 +128,7 @@ class SessionForm extends React.Component {
                         <br/>
             {this.props.formType === 'sign up' && !this.state.formFilled ? <button id="button" onClick={this.nextForm}>NEXT</button> : <button id="button" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>}
                     </form>
-                    <p className="errors">{this.props.errors.join(". ")}</p>
+                    <p className="errors">{this.props.errors}</p>
                 </div>
             )
         } else {
@@ -146,7 +146,7 @@ class SessionForm extends React.Component {
                         <button id="button" type="submit" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>
                         <p onClick={this.previousForm}>back</p>
                     </form>
-                    <p className="errors">{this.props.errors.join(". ")}</p>
+                    <p className="errors">{this.props.errors}</p>
                 </div>
             )
         }
