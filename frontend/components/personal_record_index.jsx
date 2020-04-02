@@ -85,7 +85,7 @@ class PersonalRecordIndex extends React.Component {
         let squatRecords;
         let benchRecords;
         let deadliftRecords;
-        const errors = this.props.errors ? this.props.errors : [""]
+        // const errors = this.props.errors ? this.props.errors : [""]
         if (this.state.filter === 'all') {
              squatRecords = personalRecords.filter(record => record.exercise === "squat").sort((a, b) => a.weight - b.weight)
              benchRecords = personalRecords.filter(record => record.exercise === "bench").sort((a, b) => a.weight - b.weight)
@@ -121,12 +121,12 @@ class PersonalRecordIndex extends React.Component {
                     </label>
                     <button onClick={this.handleSubmit}>LOG PR</button>
                 </form>
-                {
+                {/* {
                     errors.map(error => (
                         <p className="errors">{error}</p>
                     ))
-                }
-                {/* <p className="errors">{this.props.errors}</p> */}
+                } */}
+                <p className="errors">{this.props.errors.join(" ")}</p>
                 
                 <div className="pr-filters"> 
                     <li id={this.state.selected === 'ALL' ? 'selected' : "non-selected"} onClick={(e) => this.setState({filter: 'all', selected: e.target.innerHTML})}>ALL</li>

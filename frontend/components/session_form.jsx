@@ -117,7 +117,7 @@ class SessionForm extends React.Component {
     
 
     render() {
-        const errors = this.props.errors ? this.props.errors : [""]
+        // const errors = this.props.errors ? this.props.errors : [""]
         if (this.props.formType === 'login' || (this.props.formType === 'sign up' && !this.state.formFilled)) {
             return (
                 <div className="session-form">
@@ -129,12 +129,12 @@ class SessionForm extends React.Component {
                         <br/>
             {this.props.formType === 'sign up' && !this.state.formFilled ? <button id="button" onClick={this.nextForm}>NEXT</button> : <button id="button" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>}
                     </form>
-                    {
+                    {/* {
                         errors.map(error => (
                             <p className="errors">{error}</p>
                         ))
-                    }
-                    {/* <p className="errors">{this.props.errors}</p> */}
+                    } */}
+                    <p className="errors">{this.props.errors.join(" ")}</p>
                 </div>
             )
         } else {
@@ -152,12 +152,12 @@ class SessionForm extends React.Component {
                         <button id="button" type="submit" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>
                         <p onClick={this.previousForm}>back</p>
                     </form>
-                    {
+                    {/* {
                         errors.map(error => (
                         <p className="errors">{error}</p>
                         ))
-                    }
-                    {/* <p className="errors">{this.props.errors}</p> */}
+                    } */}
+                    <p className="errors">{this.props.errors.join(" ")}</p>
                 </div>
             )
         }

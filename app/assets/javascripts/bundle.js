@@ -1065,8 +1065,7 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       var personalRecords = this.props.personalRecords;
       var squatRecords;
       var benchRecords;
-      var deadliftRecords;
-      var errors = this.props.errors ? this.props.errors : [""];
+      var deadliftRecords; // const errors = this.props.errors ? this.props.errors : [""]
 
       if (this.state.filter === 'all') {
         squatRecords = personalRecords.filter(function (record) {
@@ -1151,11 +1150,9 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateReps
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "LOG PR")), errors.map(function (error) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "errors"
-        }, error);
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "errors"
+      }, this.props.errors.join(" ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pr-filters"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: this.state.selected === 'ALL' ? 'selected' : "non-selected",
@@ -1577,8 +1574,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors ? this.props.errors : [""];
-
+      // const errors = this.props.errors ? this.props.errors : [""]
       if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
@@ -1598,11 +1594,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
           onClick: this.handleSubmit
-        }, this.props.formType.toUpperCase())), errors.map(function (error) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "errors"
-          }, error);
-        }));
+        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, this.props.errors.join(" ")));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form-general"
@@ -1641,11 +1635,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           onClick: this.handleSubmit
         }, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           onClick: this.previousForm
-        }, "back")), errors.map(function (error) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "errors"
-          }, error);
-        }));
+        }, "back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, this.props.errors.join(" ")));
       }
     }
   }]);
@@ -1910,8 +1902,8 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var changes = this.changes();
-      var weightLogs = this.props.weightLogs;
-      var errors = this.props.errors ? this.props.errors : [""];
+      var weightLogs = this.props.weightLogs; // const errors = this.props.errors ? this.props.errors : [""]
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOGS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1947,11 +1939,9 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBF
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "LOG WEIGHT")), errors.map(function (error) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "errors"
-        }, error);
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG WEIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "errors"
+      }, this.props.errors.join(" ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-logs"
       }, weightLogs.map(function (log) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -2353,7 +2343,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
