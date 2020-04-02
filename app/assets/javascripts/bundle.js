@@ -1150,9 +1150,11 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateReps
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "LOG PR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errors"
-      }, this.props.errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG PR")), this.props.errors.map(function (error) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, error);
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pr-filters"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: this.state.selected === 'ALL' ? 'selected' : "non-selected",
@@ -1593,9 +1595,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
           onClick: this.handleSubmit
-        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "errors"
-        }, this.props.errors));
+        }, this.props.formType.toUpperCase())), this.props.errors.map(function (error) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "errors"
+          }, error);
+        }));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form-general"
@@ -1634,9 +1638,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           onClick: this.handleSubmit
         }, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           onClick: this.previousForm
-        }, "back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "errors"
-        }, this.props.errors));
+        }, "back")), this.props.errors.map(function (error) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "errors"
+          }, error);
+        }));
       }
     }
   }]);
@@ -1937,9 +1943,11 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBF
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "LOG WEIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errors"
-      }, this.props.errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG WEIGHT")), this.props.errors.map(function (error) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "errors"
+        }, error);
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-logs"
       }, weightLogs.map(function (log) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weight_log_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
