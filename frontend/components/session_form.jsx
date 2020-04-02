@@ -117,6 +117,7 @@ class SessionForm extends React.Component {
     
 
     render() {
+        const errors = this.props.errors ? this.props.errors : [""]
         if (this.props.formType === 'login' || (this.props.formType === 'sign up' && !this.state.formFilled)) {
             return (
                 <div className="session-form">
@@ -129,7 +130,7 @@ class SessionForm extends React.Component {
             {this.props.formType === 'sign up' && !this.state.formFilled ? <button id="button" onClick={this.nextForm}>NEXT</button> : <button id="button" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>}
                     </form>
                     {
-                        this.props.errors.map(error => (
+                        errors.map(error => (
                             <p className="errors">{error}</p>
                         ))
                     }
@@ -152,7 +153,7 @@ class SessionForm extends React.Component {
                         <p onClick={this.previousForm}>back</p>
                     </form>
                     {
-                        this.props.errors.map(error => (
+                        errors.map(error => (
                         <p className="errors">{error}</p>
                         ))
                     }

@@ -85,6 +85,7 @@ class PersonalRecordIndex extends React.Component {
         let squatRecords;
         let benchRecords;
         let deadliftRecords;
+        const errors = this.props.errors ? this.props.errors : [""]
         if (this.state.filter === 'all') {
              squatRecords = personalRecords.filter(record => record.exercise === "squat").sort((a, b) => a.weight - b.weight)
              benchRecords = personalRecords.filter(record => record.exercise === "bench").sort((a, b) => a.weight - b.weight)
@@ -121,7 +122,7 @@ class PersonalRecordIndex extends React.Component {
                     <button onClick={this.handleSubmit}>LOG PR</button>
                 </form>
                 {
-                    this.props.errors.map(error => (
+                    errors.map(error => (
                         <p className="errors">{error}</p>
                     ))
                 }

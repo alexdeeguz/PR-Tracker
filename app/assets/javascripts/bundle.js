@@ -1066,6 +1066,7 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
       var squatRecords;
       var benchRecords;
       var deadliftRecords;
+      var errors = this.props.errors ? this.props.errors : [""];
 
       if (this.state.filter === 'all') {
         squatRecords = personalRecords.filter(function (record) {
@@ -1150,7 +1151,7 @@ var PersonalRecordIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateReps
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "LOG PR")), this.props.errors.map(function (error) {
+      }, "LOG PR")), errors.map(function (error) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "errors"
         }, error);
@@ -1576,6 +1577,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var errors = this.props.errors ? this.props.errors : [""];
+
       if (this.props.formType === 'login' || this.props.formType === 'sign up' && !this.state.formFilled) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
@@ -1595,7 +1598,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
           onClick: this.handleSubmit
-        }, this.props.formType.toUpperCase())), this.props.errors.map(function (error) {
+        }, this.props.formType.toUpperCase())), errors.map(function (error) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "errors"
           }, error);
@@ -1638,7 +1641,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           onClick: this.handleSubmit
         }, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           onClick: this.previousForm
-        }, "back")), this.props.errors.map(function (error) {
+        }, "back")), errors.map(function (error) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "errors"
           }, error);
@@ -1908,6 +1911,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var changes = this.changes();
       var weightLogs = this.props.weightLogs;
+      var errors = this.props.errors ? this.props.errors : [""];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weight-log-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "WEIGHT LOGS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1943,7 +1947,7 @@ var WeightLogIndex = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBF
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "LOG WEIGHT")), this.props.errors.map(function (error) {
+      }, "LOG WEIGHT")), errors.map(function (error) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "errors"
         }, error);

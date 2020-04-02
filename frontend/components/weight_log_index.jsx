@@ -96,6 +96,7 @@ class WeightLogIndex extends React.Component {
     render() {
         const changes = this.changes()
         const { weightLogs } = this.props
+        const errors = this.props.errors ? this.props.errors : [""]
         return (
             <div className="weight-log-index-container">
                 <h1>WEIGHT LOGS</h1>
@@ -133,7 +134,7 @@ class WeightLogIndex extends React.Component {
                     <button type="submit">LOG WEIGHT</button>
                 </form>
                 {
-                    this.props.errors.map(error => (
+                    errors.map(error => (
                         <p className="errors">{error}</p>
                     ))
                 }
