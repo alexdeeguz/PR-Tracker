@@ -47,7 +47,7 @@ class Home extends React.Component {
                         <a href="https://github.com/alexdeeguz/PR-Tracker"><img className="icon" src={window.githubURL} /></a>
                     </div>
                     <p>Join now to keep track of personal records and body composition logs to reach your fitness goals!</p>
-                    <button onClick={this.openModal}>LOGIN OR SIGNUP</button>
+                    <button onClick={this.openModal}>LOGIN OR SIGN UP</button>
                     <p>Learn More</p>
                     <p>↓↓↓</p>
                 </div>
