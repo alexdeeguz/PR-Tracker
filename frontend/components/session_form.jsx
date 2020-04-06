@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
         this.updateBF = this.updateBF.bind(this)
         this.nextForm = this.nextForm.bind(this)
         this.previousForm = this.previousForm.bind(this)
+        this.demoLogin = this.demoLogin.bind(this)
         this.state = {
             username: "",
             password: "",
@@ -114,6 +115,17 @@ class SessionForm extends React.Component {
                 .then(() => this.props.history.push('/profile'))
         }
     }
+
+    demoLogin(e) {
+        e.preventDefault()
+        const user = {
+            username: 'demo_user',
+            password: 'password'
+        }
+
+        this.props.login(user)
+            .then(() => this.props.history.push('/profile'))
+    }
     
 
     render() {
@@ -128,6 +140,8 @@ class SessionForm extends React.Component {
                             <input type="password" onChange={this.updatePassword} value={this.state.password} placeholder="Password"/>
                         <br/>
             {this.props.formType === 'sign up' && !this.state.formFilled ? <button id="button" onClick={this.nextForm}>NEXT</button> : <button id="button" onClick={this.handleSubmit}>{this.props.formType.toUpperCase()}</button>}
+            <br/>
+            {this.props.formType === 'login' ? <button id="button" onClick={this.demoLogin}>DEMO LOGIN</button> : ""}
                     </form>
                     {/* {
                         errors.map(error => (

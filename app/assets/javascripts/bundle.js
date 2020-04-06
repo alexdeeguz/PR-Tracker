@@ -1451,6 +1451,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.updateBF = _this.updateBF.bind(_assertThisInitialized(_this));
     _this.nextForm = _this.nextForm.bind(_assertThisInitialized(_this));
     _this.previousForm = _this.previousForm.bind(_assertThisInitialized(_this));
+    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
     _this.state = {
       username: "",
       password: "",
@@ -1572,6 +1573,20 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "demoLogin",
+    value: function demoLogin(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var user = {
+        username: 'demo_user',
+        password: 'password'
+      };
+      this.props.login(user).then(function () {
+        return _this3.props.history.push('/profile');
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       // const errors = this.props.errors ? this.props.errors : [""]
@@ -1594,7 +1609,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "NEXT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "button",
           onClick: this.handleSubmit
-        }, this.props.formType.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, this.props.formType.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.formType === 'login' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "button",
+          onClick: this.demoLogin
+        }, "DEMO LOGIN") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "errors"
         }, this.props.errors.join(" ")));
       } else {
