@@ -32,10 +32,17 @@
     width: 100%;
 }
 
-.log-pr-form > label > input, .log-pr-form > select {
-    height: 5vh;
-    width: 13vw;
-    font-size: 3vh;
+.log-pr-form > label > input {
+    height: 3vh;
+    width: 10vw;
+    font-size: 15px;
+}
+
+.log-pr-form > select {
+    height: 4vh;
+    width: 15vw;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .log-pr-form {
@@ -163,11 +170,11 @@
   width: 0;
 }
 
-.log-pr-form > select {
-  font-size: 1rem;
-  display: inline-block;
-  margin: 3em 2em;
-  width: 350px;
-  position: relative;
-  cursor: pointer;
-}
+// .log-pr-form > select {
+//   font-size: 1rem;
+//   display: inline-block;
+//   margin: 3em 2em;
+//   width: 350px;
+//   position: relative;
+//   cursor: pointer;
+// }
