@@ -18,6 +18,11 @@
       window.icon4URL = "<%= image_url('icon4.png') %>";
     </script>
 
+    <meta property="og:title" content="PR Tracker" />
+    <meta name="image" property="og:image" content="<%= image_url('pr-tracker.png') %>">
+    <meta property="og:description" content="A web application for athletes to track personal records and body composition."/>
+    <meta property="og:url" content="https://personal-record-tracker.herokuapp.com/#/"/>
+
     <% if logged_in? %>
       <script type="text/javascript">
         window.currentUser = <%= render(
